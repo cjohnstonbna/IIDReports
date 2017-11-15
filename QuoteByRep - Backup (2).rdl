@@ -1,0 +1,893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="SQLPrivy">
+      <rd:DataSourceID>9be63ef6-78d6-4b30-9353-229251c93c57</rd:DataSourceID>
+      <DataSourceReference>SQLPrivy</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <rd:ReportID>2e005229-6b5d-4877-a031-e48d550de471</rd:ReportID>
+  <Width>10in</Width>
+  <Body>
+    <Height>0.96in</Height>
+    <ColumnSpacing>0.5in</ColumnSpacing>
+    <ReportItems>
+      <Textbox Name="textbox1">
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>18pt</FontSize>
+          <Color>#1c3a70</Color>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Value>QuoteByRep</Value>
+        <CanGrow>true</CanGrow>
+        <Height>0.33in</Height>
+      </Textbox>
+      <Matrix Name="matrix1">
+        <Top>0.33in</Top>
+        <RowGroupings>
+          <RowGrouping>
+            <DynamicRows>
+              <Grouping Name="matrix1_RepLastName">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!RepLastName.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!RepLastName.Value</SortExpression>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="RepLastName">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>10pt</FontSize>
+                    <Color>White</Color>
+                    <BackgroundColor>#60759b</BackgroundColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <BorderColor>
+                      <Default>DimGray</Default>
+                    </BorderColor>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <rd:DefaultName>RepLastName</rd:DefaultName>
+                  <Value>=Fields!RepLastName.Value</Value>
+                  <CanGrow>true</CanGrow>
+                  <Height>0.21in</Height>
+                  <Width>1in</Width>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+            <Width>1in</Width>
+          </RowGrouping>
+        </RowGroupings>
+        <MatrixRows>
+          <MatrixRow>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox2">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox2</rd:DefaultName>
+                    <Value>=First(Fields!QuoteDate.Value)</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox3">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox3</rd:DefaultName>
+                    <Value>=Sum(Fields!CurrentRev.Value)</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox4">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox4</rd:DefaultName>
+                    <Value>=First(Fields!RepShipTo.Value)</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox5">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox5</rd:DefaultName>
+                    <Value>=First(Fields!NationalAcct.Value)</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox6">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox6</rd:DefaultName>
+                    <Value>=First(Fields!ShipName.Value)</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox7">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox7</rd:DefaultName>
+                    <Value>=Sum(Fields!Prop.Value)</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox8">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox8</rd:DefaultName>
+                    <Value>=Sum(Fields!Non_Prop.Value)</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox9">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox9</rd:DefaultName>
+                    <Value>=Sum(Fields!totalprice.Value)</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox10">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox10</rd:DefaultName>
+                    <Value>=First(Fields!ProjectNotes.Value)</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+            <Height>0.21in</Height>
+          </MatrixRow>
+        </MatrixRows>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox11">
+              <Style>
+                <FontFamily>Tahoma</FontFamily>
+                <FontSize>10pt</FontSize>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+                <BorderColor>
+                  <Default>DimGray</Default>
+                </BorderColor>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+              <rd:DefaultName>textbox11</rd:DefaultName>
+              <Value>
+              </Value>
+              <CanGrow>true</CanGrow>
+              <Height>0.21in</Height>
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <DataSetName>DataSet1</DataSetName>
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>1in</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>1in</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>1in</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>1in</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>1in</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>1in</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>1in</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>1in</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>1in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <DynamicColumns>
+              <Grouping Name="matrix1_OrderID">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!OrderID.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!OrderID.Value</SortExpression>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="OrderID">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>10pt</FontSize>
+                    <Color>White</Color>
+                    <BackgroundColor>#60759b</BackgroundColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <BorderColor>
+                      <Default>DimGray</Default>
+                    </BorderColor>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <rd:DefaultName>OrderID</rd:DefaultName>
+                  <Value>=Fields!OrderID.Value</Value>
+                  <CanGrow>true</CanGrow>
+                  <Height>0.21in</Height>
+                  <Width>1in</Width>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+            <Height>0.21in</Height>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <StaticColumns>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox12">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox12</rd:DefaultName>
+                    <Value>Quote Date</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox13">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox13</rd:DefaultName>
+                    <Value>Current Rev</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox14">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox14</rd:DefaultName>
+                    <Value>Rep Ship To</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox15">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox15</rd:DefaultName>
+                    <Value>National Acct</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox16">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox16</rd:DefaultName>
+                    <Value>Ship Name</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox17">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox17</rd:DefaultName>
+                    <Value>Prop</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox18">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox18</rd:DefaultName>
+                    <Value>Non Prop</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox19">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox19</rd:DefaultName>
+                    <Value>totalprice</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox20">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>10pt</FontSize>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <rd:DefaultName>textbox20</rd:DefaultName>
+                    <Value>Project Notes</Value>
+                    <CanGrow>true</CanGrow>
+                    <Height>0.21in</Height>
+                    <Width>1in</Width>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+            </StaticColumns>
+            <Height>0.21in</Height>
+          </ColumnGrouping>
+        </ColumnGroupings>
+      </Matrix>
+    </ReportItems>
+  </Body>
+  <Language>en-US</Language>
+  <LeftMargin>1in</LeftMargin>
+  <RightMargin>1in</RightMargin>
+  <TopMargin>1in</TopMargin>
+  <BottomMargin>1in</BottomMargin>
+  <PageWidth>8.5in</PageWidth>
+  <PageHeight>11in</PageHeight>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Fields>
+        <Field Name="CurrentRev">
+          <DataField>CurrentRev</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="QuoteDate">
+          <DataField>QuoteDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="OrderID">
+          <DataField>OrderID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PONumber">
+          <DataField>PONumber</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PO_Date">
+          <DataField>PO_Date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductNo">
+          <DataField>ProductNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PorNP">
+          <DataField>PorNP</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Item__">
+          <DataField>Item_#</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ShipName">
+          <DataField>ShipName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReqdByDate">
+          <DataField>ReqdByDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="EstShip">
+          <DataField>EstShip</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProjInvMo">
+          <DataField>ProjInvMo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StatusOfOrder">
+          <DataField>StatusOfOrder</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ICCG_Inv_">
+          <DataField>ICCG_Inv#</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalcost">
+          <DataField>totalcost</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="sell">
+          <DataField>sell</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="extprice">
+          <DataField>extprice</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Prop">
+          <DataField>Prop</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Non_Prop">
+          <DataField>Non-Prop</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="totalprice">
+          <DataField>totalprice</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Discount">
+          <DataField>Discount</DataField>
+          <rd:TypeName>System.Single</rd:TypeName>
+        </Field>
+        <Field Name="TempProdNo">
+          <DataField>TempProdNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="quotedby">
+          <DataField>quotedby</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrderComplete">
+          <DataField>OrderComplete</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="MPorCID">
+          <DataField>MPorCID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Closed">
+          <DataField>Closed</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProjectNotes">
+          <DataField>ProjectNotes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Likelihood">
+          <DataField>Likelihood</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RepShipTo">
+          <DataField>RepShipTo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RepLastName">
+          <DataField>RepLastName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr1">
+          <DataField>Expr1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr2">
+          <DataField>Expr2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quote">
+          <DataField>Quote</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="QtrToDliver">
+          <DataField>QtrToDliver</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Shipped">
+          <DataField>Shipped</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NationalAcct">
+          <DataField>NationalAcct</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>SQLPrivy</DataSourceName>
+        <CommandType>Text</CommandType>
+        <CommandText>SELECT     MPOrders.CurrentRev, MPOrders.QuoteDate, MPOrderDetails.OrderID, MPOrders.PONumber, MPOrders.PO_Date, MPOrderDetails.ProductNo, 
+                      CASE WHEN LEFT([ProductNo], 2) = 'IH' THEN 'Prop' ELSE 'Non-Prop' END AS PorNP, MPOrderDetails.Item_#, MPOrderDetails.Quantity, MPOrders.ShipName, 
+                      MPOrders.ReqdByDate, CASE WHEN [Alt_Ship_To] = 'ICCG Warehouse' THEN reqdbydate ELSE CASE WHEN estimatedship IS NULL AND [iccg_INV#] IS NOT NULL 
+                      THEN reqdbydate ELSE [EstimatedShip] END END AS EstShip, MPOrderDetails.ProjInvMo, MPOrders.StatusOfOrder, MPOrderDetails.ICCG_Inv#, 
+                      CASE WHEN [ydsreqd] &gt; 0 THEN mPOrderdetails.unitcost + ([ydsreqd] * [FabricUnitCost]) 
+                      + [UpgradeCost] + [Foam] + [Carton] + [Labor] ELSE mPOrderdetails.unitcost + ([ydscom] * [FabricUnitCost]) 
+                      + [UpgradeCost] + [Foam] + [Carton] + [Labor] END AS totalcost, CASE WHEN prodtype = 'b' OR
+                      mporderdetails.grade = 'com' THEN (CASE WHEN [ydsreqd] &gt; 0 THEN mPOrderdetails.unitcost + ([ydsreqd] * [FabricUnitCost]) 
+                      + [UpgradeCost] + [Foam] + [Carton] + [Labor] ELSE mPOrderdetails.unitcost + ([ydscom] * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor] END) 
+                      * ((1 - [Discount]) * 100) / 100 ELSE [unitprice] * ((1 - [discount]) * 100) / 100 END AS sell, CASE WHEN prodtype = 'b' OR
+                      mporderdetails.grade = 'com' THEN (CASE WHEN [ydsreqd] &gt; 0 THEN mPOrderdetails.unitcost + ([ydsreqd] * [FabricUnitCost]) 
+                      + [UpgradeCost] + [Foam] + [Carton] + [Labor] ELSE mPOrderdetails.unitcost + ([ydscom] * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor] END) 
+                      * ((1 - [Discount]) * 100) / 100 * [Quantity] ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) * [Quantity] END AS extprice, CASE WHEN LEFT([ProductNo], 2) 
+                      = 'IH' THEN CASE WHEN prodtype = 'b' OR
+                      mporderdetails.grade = 'com' THEN (CASE WHEN [ydsreqd] &gt; 0 THEN mPOrderdetails.unitcost + ([ydsreqd] * [FabricUnitCost]) 
+                      + [UpgradeCost] + [Foam] + [Carton] + [Labor] ELSE mPOrderdetails.unitcost + ([ydscom] * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor] END) 
+                      * ((1 - [Discount]) * 100) / 100 * [Quantity] ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) * [Quantity] END ELSE 0 END AS Prop, CASE WHEN LEFT([ProductNo], 2) 
+                      != 'IH' THEN CASE WHEN prodtype = 'b' OR
+                      mporderdetails.grade = 'com' THEN (CASE WHEN [ydsreqd] &gt; 0 THEN mPOrderdetails.unitcost + ([ydsreqd] * [FabricUnitCost]) 
+                      + [UpgradeCost] + [Foam] + [Carton] + [Labor] ELSE mPOrderdetails.unitcost + ([ydscom] * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor] END) 
+                      * ((1 - [Discount]) * 100) / 100 * [Quantity] ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) * [Quantity] END ELSE 0 END AS [Non-Prop], (CASE WHEN LEFT([ProductNo], 2) 
+                      = 'IH' THEN CASE WHEN prodtype = 'b' OR
+                      mporderdetails.grade = 'com' THEN (CASE WHEN [ydsreqd] &gt; 0 THEN mPOrderdetails.unitcost + ([ydsreqd] * [FabricUnitCost]) 
+                      + [UpgradeCost] + [Foam] + [Carton] + [Labor] ELSE mPOrderdetails.unitcost + ([ydscom] * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor] END) 
+                      * ((1 - [Discount]) * 100) / 100 * [Quantity] ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) * [Quantity] END ELSE 0 END) + (CASE WHEN LEFT([ProductNo], 2) 
+                      != 'IH' THEN CASE WHEN prodtype = 'b' OR
+                      mporderdetails.grade = 'com' THEN (CASE WHEN [ydsreqd] &gt; 0 THEN mPOrderdetails.unitcost + ([ydsreqd] * [FabricUnitCost]) 
+                      + [UpgradeCost] + [Foam] + [Carton] + [Labor] ELSE mPOrderdetails.unitcost + ([ydscom] * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor] END) 
+                      * ((1 - [Discount]) * 100) / 100 * [Quantity] ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) * [Quantity] END ELSE 0 END) AS totalprice, MPOrderDetails.Discount, 
+                      MPOrderDetails.TempProdNo, CASE WHEN [designer] IS NULL THEN [Quoter] ELSE [designer] END AS quotedby, MPOrders.OrderComplete, MPOrders.MPorCID, 
+                      MPOrders.Closed, MPOrders.ProjectNotes, MPOrders.Likelihood, MPOrders.RepShipTo, MPOrders.RepLastName, MPOrders.RepShipTo AS Expr1, 
+                      MPOrders.RepLastName AS Expr2, MPOrders.Quote, MPOrders.QtrToDliver, ShipmentsByRepYTD.[SumOfExtended Amt] AS Shipped, Customers.NationalAcct
+FROM         MarketedProducts LEFT OUTER JOIN
+                      MPOrderDetails ON MarketedProducts.ProdNo = MPOrderDetails.ProductNo RIGHT OUTER JOIN
+                      MPOrders ON MPOrders.QuoteNo = MPOrderDetails.OrderID LEFT OUTER JOIN
+                          (SELECT     SalesRep, Last, SUM([Extended Amt]) AS [SumOfExtended Amt]
+                            FROM          (SELECT     ShipData.SalesRep, ShipData.Market, ShipData.[Ship Month], tblSalesRepCOMP.Last, ShipData.[Extended Amt], ShipData.[Item Nbr]
+                                                    FROM          ShipData INNER JOIN
+                                                                           tblSalesRepCOMP ON ShipData.SalesRep = tblSalesRepCOMP.OrdPtSlmn
+                                                    WHERE      (ShipData.Market LIKE 'bu%') AND (LEFT(ShipData.[Ship Month], 4) = YEAR(@enddate)) AND (ShipData.[Item Nbr] = 'ihb1000')) 
+                                                   AS shipmentsbyrep
+                            GROUP BY SalesRep, Last) AS ShipmentsByRepYTD ON MPOrders.RepLastName = ShipmentsByRepYTD.Last LEFT OUTER JOIN
+                      Customers ON MPOrders.CustomerID = Customers.CustomerID
+WHERE     (MPOrders.QuoteDate BETWEEN @startdate AND @enddate) AND (MPOrders.PONumber IS NULL) AND (MPOrderDetails.ProductNo NOT LIKE 'mfrt%') AND 
+                      (MPOrderDetails.ProductNo NOT LIKE 'bfrt%') AND (MPOrderDetails.ProductNo NOT LIKE 'bcom%') AND (MPOrderDetails.ProductNo NOT LIKE 'mcom%') AND 
+                      (MPOrderDetails.Quantity &gt; 0) AND (MPOrders.StatusOfOrder NOT LIKE 'lost') AND (MPOrders.StatusOfOrder NOT LIKE 'cance%') AND 
+                      (MPOrders.StatusOfOrder NOT LIKE 'inact%') AND (MPOrders.StatusOfOrder NOT LIKE 'order%') AND (MPOrderDetails.TempProdNo IS NULL) AND 
+                      (MPOrders.RepShipTo IN (@repname)) OR
+                      (MPOrders.QuoteDate BETWEEN @startdate AND @enddate) AND (MPOrders.PONumber IS NULL) AND (MPOrderDetails.ProductNo NOT LIKE 'mfrt%') AND 
+                      (MPOrderDetails.ProductNo NOT LIKE 'bfrt%') AND (MPOrderDetails.ProductNo NOT LIKE 'bcom%') AND (MPOrderDetails.ProductNo NOT LIKE 'mcom%') AND 
+                      (MPOrderDetails.Quantity &gt; 0) AND (MPOrders.StatusOfOrder NOT LIKE 'lost') AND (MPOrders.StatusOfOrder NOT LIKE 'cance%') AND 
+                      (MPOrders.StatusOfOrder NOT LIKE 'inact%') AND (MPOrders.StatusOfOrder NOT LIKE 'order%') AND (MPOrderDetails.TempProdNo NOT LIKE 'yes') AND 
+                      (MPOrders.RepShipTo IN (@repname))</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@enddate">
+            <Value>=Parameters!enddate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@startdate">
+            <Value>=Parameters!startdate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@repname">
+            <Value>=Parameters!repname.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <Timeout>0</Timeout>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="enddate">
+      <DataType>String</DataType>
+      <Prompt>enddate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="startdate">
+      <DataType>String</DataType>
+      <Prompt>startdate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="repname">
+      <DataType>String</DataType>
+      <Prompt>repname</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+</Report>
