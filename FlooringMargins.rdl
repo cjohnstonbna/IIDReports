@@ -1162,7 +1162,7 @@ ORDER BY OD.Item_#;</CommandText>
       <DataType>DateTime</DataType>
       <DefaultValue>
         <Values>
-          <Value>=DateAdd("m", -2, DateSerial(Year(Now()), Month(Now()), 1))</Value>
+          <Value>=DateAdd("m", -1, DateSerial(Year(Now()), Month(Now()), 1))</Value>
         </Values>
       </DefaultValue>
       <Prompt>Enter a Start Date</Prompt>
@@ -1171,7 +1171,7 @@ ORDER BY OD.Item_#;</CommandText>
       <DataType>DateTime</DataType>
       <DefaultValue>
         <Values>
-          <Value>=DateAdd("d", -1, DateSerial(Year(Now()), Month(Now()), 1))</Value>
+          <Value>=DateAdd("s", -1, DateSerial(Year(Now()), Month(Now()), 1))</Value>
         </Values>
       </DefaultValue>
       <Prompt>Enter an Ending Date:</Prompt>

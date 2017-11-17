@@ -54,10 +54,14 @@
     <Report Include="CarryOver.rdl" />
     <Report Include="Close Ratio.rdl" />
     <Report Include="CloseRate.rdl" />
+    <Report Include="Facilities By State.rdl" />
     <Report Include="FlooringMargins.rdl" />
     <Report Include="InstallMargins.rdl" />
+    <Report Include="InvoicedItems.rdl" />
+    <Report Include="InvoicesByProjectCoordinator.rdl" />
     <Report Include="LeadSourceTracking.rdl" />
     <Report Include="National Accounts.rdl" />
+    <Report Include="PurchaseOrderByProjectCoordinator.rdl" />
     <Report Include="QuoteByRep.rdl" />
     <Report Include="QuotebyRep2.rdl" />
     <Report Include="QuoteDetail.rdl" />
