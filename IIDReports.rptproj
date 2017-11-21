@@ -65,6 +65,7 @@
     <Report Include="QuoteByRep.rdl" />
     <Report Include="QuotebyRep2.rdl" />
     <Report Include="QuoteDetail.rdl" />
+    <Report Include="UnitsShippedByProductCategory.rdl" />
     <Report Include="WorkInProgress.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
