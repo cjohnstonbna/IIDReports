@@ -50,6 +50,7 @@
     <DataSource Include="SQLPrivy.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="AccountShipmentSummary.rdl" />
     <Report Include="Barricks and Artone Resident Room Furniture.rdl" />
     <Report Include="CarryOver.rdl" />
     <Report Include="Close Ratio.rdl" />
@@ -66,6 +67,7 @@
     <Report Include="QuotebyRep2.rdl" />
     <Report Include="QuoteDetail.rdl" />
     <Report Include="UnitsShippedByProductCategory.rdl" />
+    <Report Include="VendorTotals.rdl" />
     <Report Include="WorkInProgress.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
