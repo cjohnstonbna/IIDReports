@@ -23,7 +23,7 @@
         </QueryParameters>
         <CommandText>SELECT ShippedBase.RepShipTo
 	,ShippedBase.StatusOfOrder
-	,ShippedBase.NationalAcct
+	,IsNull(ShippedBase.NationalAcct, ' No National Account') as NationalAcct
 	,ShippedBase.Completed
 	,ShippedBase.OrderID
 	,Sum(IIf([PorNP] = 'P', [ExtPrice], 0)) AS Proprietary
@@ -108,7 +108,7 @@ WHERE (
 ) AS ShippedBase
 GROUP BY ShippedBase.RepShipTo
 	,ShippedBase.StatusOfOrder
-	,ShippedBase.NationalAcct
+	,IsNull(ShippedBase.NationalAcct, ' No National Account')
 	,ShippedBase.Completed
 	,ShippedBase.OrderID
 	,ShippedBase.ShipName
@@ -124,7 +124,7 @@ HAVING (
 			@EndShipDate
 			)
 		)
-ORDER BY ShippedBase.NationalAcct
+ORDER BY IsNull(ShippedBase.NationalAcct, ' No National Account')
 	,ShippedBase.OrderID
 		;</CommandText>
       </Query>
@@ -164,6 +164,120 @@ ORDER BY ShippedBase.NationalAcct
         <Field Name="Completed">
           <DataField>Completed</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+      <Filters>
+        <Filter>
+          <FilterExpression>=Fields!NationalAcct.Value</FilterExpression>
+          <Operator>In</Operator>
+          <FilterValues>
+            <FilterValue>=Parameters!NationalAccount.Value</FilterValue>
+          </FilterValues>
+        </Filter>
+      </Filters>
+    </DataSet>
+    <DataSet Name="NationalAccount">
+      <Query>
+        <DataSourceName>SQLPrivy</DataSourceName>
+        <CommandText>SELECT Distinct IsNull(ShippedBase.NationalAcct,' No National Account') AS NationalAcct
+FROM (
+
+SELECT O.RepShipTo
+	,O.StatusOfOrder
+	,O.RepLastName
+	,O.ShipName
+	,OD.ProductNo
+	,Case When Left(ProductNo, 2) = 'IH' Then 'P' Else 'N' End as PorNP
+	,OD.Quantity
+	,Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) as Totalcost
+	,Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) as Sell
+	,Cast((case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) * [Quantity] as money) AS ExtPrice
+	,O.PONumber
+	,O.QuoteDate
+	,Cast((case when Left([ProductNo],2)&lt;&gt;'IH' then (case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) * [Quantity]  else  0 end) as money) AS TotalPrice
+	,Year(O.QuoteDate) AS Expr1
+	,O.MPorCID
+	,OD.OrderID
+	,OD.OrderDetailID
+	,OD.ShipDate
+	,Year(OD.ShipDate) AS ShipYear
+	,C.NationalAcct
+	,OD.Completed
+	,OD.[ICCG_Inv#]
+FROM 
+	MarketedProducts MP RIGHT JOIN 
+		MPOrders O RIGHT JOIN MPOrderDetails OD ON O.QuoteNo = OD.OrderID
+		 ON MP.ProdNo = OD.ProductNo
+	
+LEFT JOIN Customers C ON O.CustomerID = C.CustomerID
+WHERE (
+		(
+			(OD.ProductNo) NOT LIKE 'mcom%'
+			AND (OD.ProductNo) NOT LIKE 'bcom%'
+			AND (OD.ProductNo) NOT LIKE 'mfrt%'
+			AND (OD.ProductNo) NOT LIKE 'bfrt%'
+			)
+		AND ((IIf(Left([ProductNo], 2) = 'IH', 'P', 'N')) = 'N')
+		AND ((OD.ShipDate) IS NOT NULL)
+		AND (
+			(OD.[ICCG_Inv#]) &lt;&gt; 1
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 2
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 111
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 222
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 333
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 444
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 555
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 777
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 888
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 999
+			)			
+		)
+	OR (
+		(
+			(OD.ProductNo) NOT LIKE 'mcom%'
+			AND (OD.ProductNo) NOT LIKE 'bcom%'
+			AND (OD.ProductNo) NOT LIKE 'mfrt%'
+			AND (OD.ProductNo) NOT LIKE 'bfrt%'
+			)
+		AND ((IIf(Left([ProductNo], 2) = 'IH', 'P', 'N')) = 'P')
+		AND ((OD.ShipDate) IS NOT NULL)
+		AND (
+			(OD.[ICCG_Inv#]) &lt;&gt; 1
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 2
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 222
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 333
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 444
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 555
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 777
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 888
+			AND (OD.[ICCG_Inv#]) &lt;&gt; 999
+			)
+		)
+) AS ShippedBase
+GROUP BY ShippedBase.RepShipTo
+	,ShippedBase.StatusOfOrder
+	,ShippedBase.NationalAcct
+	,ShippedBase.Completed
+	,ShippedBase.OrderID
+	,ShippedBase.ShipName
+HAVING (
+		((ShippedBase.StatusOfOrder) = 'Order')
+		AND (
+			(ShippedBase.Completed) BETWEEN
+			'10/1/2017' 
+			--@StartShipDate
+				AND
+			'10/31/2017'
+			--@EndShipDate
+			)
+		)
+ORDER BY IsNull(ShippedBase.NationalAcct,' No National Account')
+		;</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="NationalAcct">
+          <DataField>NationalAcct</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -989,7 +1103,7 @@ ORDER BY ShippedBase.NationalAcct
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Account Shipment Summary</Value>
+                      <Value>Account Shipment Summary With Invoice</Value>
                       <Style>
                         <FontStyle>Italic</FontStyle>
                         <FontFamily>Times New Roman</FontFamily>
@@ -1202,6 +1316,24 @@ ORDER BY ShippedBase.NationalAcct
       </DefaultValue>
       <Prompt>Enter End Ship Date:</Prompt>
     </ReportParameter>
+    <ReportParameter Name="NationalAccount">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>NationalAccount</DataSetName>
+          <ValueField>NationalAcct</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Select a National Account</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>NationalAccount</DataSetName>
+          <ValueField>NationalAcct</ValueField>
+          <LabelField>NationalAcct</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1217,6 +1349,11 @@ ORDER BY ShippedBase.NationalAcct
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>EndShipDate</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>NationalAccount</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
