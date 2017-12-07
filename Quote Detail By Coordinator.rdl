@@ -6,11 +6,11 @@
     <DataSource Name="SQLPrivy">
       <DataSourceReference>SQLPrivy</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>d5d5b463-3570-4678-9b29-4b9ec0344549</rd:DataSourceID>
+      <rd:DataSourceID>77fd3499-0524-4e37-bbd7-8c70b1fdd3ef</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="OpenProjectsBySR">
+    <DataSet Name="QuoteDetailByCoordinator">
       <Query>
         <DataSourceName>SQLPrivy</DataSourceName>
         <QueryParameters>
@@ -20,113 +20,84 @@
           <QueryParameter Name="@EndDate">
             <Value>=Parameters!EndDate.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="@NationalAcct">
-            <Value>=Parameters!NationalAcct.Value</Value>
-          </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        O.NationalAccount, O.QuoteDate, OD.OrderID, O.PONumber, O.PO_Date, OD.ProductNo, CASE WHEN (LEFT(ProductNo, 2)) = 'IH' THEN 'Proprietary' ELSE 'Non-Proprietary' END AS PorNP, OD.Item_#, OD.Quantity, 
-                         O.ShipName, O.ReqdByDate, CASE WHEN Alt_Ship_To = 'ICCG Warehouse' THEN ReqdByDate ELSE CASE WHEN EstimatedShip IS NULL AND ICCG_Inv# IS NOT NULL 
-                         THEN ReqdByDate ELSE EstimatedShip END END AS EstShip, O.ProjCoor, OD.ProjInvMo, O.StatusOfOrder, OD.ICCG_Inv#, CAST(OD.UnitCost + (CASE WHEN isnull([ydsreqd], 0) 
-                         &gt; 0 THEN [ydsreqd] ELSE [YdsCOM] END * OD.FabricUnitCost + OD.UpgradeCost + OD.Foam + OD.Carton + OD.Labor) AS money) AS Totalcost, CAST(CASE WHEN [ProdType] = 'B' OR
-                         OD.Grade = 'com' THEN ((OD.UnitCost + (CASE WHEN isnull([ydsreqd], 0) &gt; 0 THEN [ydsreqd] ELSE [YdsCOM] END * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor]) * ((1 - [Discount]) * 100) / 100) 
-                         ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) END AS money) AS Sell, CAST((CASE WHEN [ProdType] = 'B' OR
-                         OD.Grade = 'com' THEN ((OD.UnitCost + (CASE WHEN isnull([ydsreqd], 0) &gt; 0 THEN [ydsreqd] ELSE [YdsCOM] END * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor]) * ((1 - [Discount]) * 100) / 100) 
-                         ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) END) * OD.Quantity AS money) AS ExtPrice, CASE WHEN (CASE WHEN (LEFT(ProductNo, 2)) = 'IH' THEN 'Proprietary' ELSE 'Non-Proprietary' END) 
-                         = 'Proprietary' THEN CAST((CASE WHEN [ProdType] = 'B' OR
-                         OD.Grade = 'com' THEN ((OD.UnitCost + (CASE WHEN isnull([ydsreqd], 0) &gt; 0 THEN [ydsreqd] ELSE [YdsCOM] END * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor]) * ((1 - [Discount]) * 100) / 100) 
-                         ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) END) * [Quantity] AS money) ELSE 0 END AS Proprietary, CASE WHEN (CASE WHEN (LEFT(ProductNo, 2)) = 'IH' THEN 'Proprietary' ELSE 'Non-Proprietary' END) 
-                         = 'Non-Proprietary' THEN CAST((CASE WHEN [ProdType] = 'B' OR
-                         OD.Grade = 'com' THEN ((OD.UnitCost + (CASE WHEN isnull([ydsreqd], 0) &gt; 0 THEN [ydsreqd] ELSE [YdsCOM] END * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor]) * ((1 - [Discount]) * 100) / 100) 
-                         ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) END) * [Quantity] AS money) ELSE 0 END AS 'Non-Proprietary', CAST((CASE WHEN (CASE WHEN (LEFT(ProductNo, 2)) 
-                         = 'IH' THEN 'Proprietary' ELSE 'Non-Proprietary' END) = 'Proprietary' THEN CAST((CASE WHEN [ProdType] = 'B' OR
-                         OD.Grade = 'com' THEN ((OD.UnitCost + (CASE WHEN isnull([ydsreqd], 0) &gt; 0 THEN [ydsreqd] ELSE [YdsCOM] END * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor]) * ((1 - [Discount]) * 100) / 100) 
-                         ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) END) * [Quantity] AS money) ELSE 0 END) + (CASE WHEN (CASE WHEN (LEFT(ProductNo, 2)) = 'IH' THEN 'Proprietary' ELSE 'Non-Proprietary' END) 
-                         = 'Non-Proprietary' THEN CAST((CASE WHEN [ProdType] = 'B' OR
-                         OD.Grade = 'com' THEN ((OD.UnitCost + (CASE WHEN isnull([ydsreqd], 0) &gt; 0 THEN [ydsreqd] ELSE [YdsCOM] END * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor]) * ((1 - [Discount]) * 100) / 100) 
-                         ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) END) * [Quantity] AS money) ELSE 0 END) AS money) AS TotalPrice, OD.Discount, OD.TempProdNo, O.Designer, CASE WHEN Designer IS NULL 
-                         THEN Quoter ELSE Designer END AS QuotedBy, O.OrderComplete, O.MPorCID, O.Closed, O.ProjectNotes, O.Likelihood, O.RepShipTo, O.RepLastName, O.RepShipTo AS Expr1, O.RepLastName AS Expr2, O.Quote, 
-                         O.QtrToDliver, S.[SumOfExtended Amt] AS Shipped, C.NationalAcct
-FROM            MarketedProducts AS MP RIGHT OUTER JOIN
-                         MPOrders AS O LEFT OUTER JOIN
-                         MPOrderDetails AS OD ON O.QuoteNo = OD.OrderID ON MP.ProdNo = OD.ProductNo LEFT OUTER JOIN
-                             (SELECT        ShipData.SalesRep, tblSalesRepCOMP.Last, SUM(ShipData.[Extended Amt]) AS [SumOfExtended Amt]
-                               FROM            ShipData INNER JOIN
-                                                         tblSalesRepCOMP ON ShipData.SalesRep = tblSalesRepCOMP.OrdPtSlmn
-                               WHERE        (ShipData.Market LIKE 'buy%') AND (LEFT(ShipData.[Ship Month], 4) LIKE DATEPART(Year, GETDATE())) AND (ShipData.[Item Nbr] = 'ihb1000')
-                               GROUP BY ShipData.SalesRep, tblSalesRepCOMP.Last) AS S ON O.RepLastName = S.Last LEFT OUTER JOIN
-                         Customers AS C ON O.CustomerID = C.CustomerID
-WHERE        (O.QuoteDate BETWEEN @StartDate AND @EndDate) AND (O.PONumber IS NULL) AND (OD.ProductNo NOT LIKE 'mfrt%') AND (OD.ProductNo NOT LIKE 'bfrt%') AND (OD.ProductNo NOT LIKE 'bcom%') AND 
-                         (OD.ProductNo NOT LIKE 'mcom%') AND (OD.Quantity &gt; 0) AND (O.StatusOfOrder NOT LIKE 'lost') AND (O.StatusOfOrder NOT LIKE 'cance%') AND (O.StatusOfOrder NOT LIKE 'inact%') AND 
-                         (O.StatusOfOrder NOT LIKE 'order%') AND (OD.TempProdNo IS NULL) AND (C.NationalAcct LIKE @NationalAcct) OR
-                         (O.QuoteDate BETWEEN @StartDate AND @EndDate) AND (O.PONumber IS NULL) AND (OD.ProductNo NOT LIKE 'mfrt%') AND (OD.ProductNo NOT LIKE 'bfrt%') AND (OD.ProductNo NOT LIKE 'bcom%') AND 
-                         (OD.ProductNo NOT LIKE 'mcom%') AND (OD.Quantity &gt; 0) AND (O.StatusOfOrder NOT LIKE 'lost') AND (O.StatusOfOrder NOT LIKE 'cance%') AND (O.StatusOfOrder NOT LIKE 'inact%') AND 
-                         (O.StatusOfOrder NOT LIKE 'order%') AND (OD.TempProdNo NOT LIKE 'yes') AND (C.NationalAcct LIKE @NationalAcct)
-ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
+        <CommandText>SELECT O.QuoteNo
+	,O.Quote
+	,IIf([StatusOfOrder] = 'Quote', 'Open', IIf([StatusOfOrder] = 'Order', 'Won', 'Lost')) AS WonLost
+	,O.Designer
+	,C.Organization
+	,O.QuoteDate
+	,O.RepLastName
+	,OD.Quantity
+	--,OD.UnitCost + (IIf([ydsreqd] &gt; 0, ISNull([ydsreqd],0), IsNull([YdsCOM],0)) * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor] AS TotalCost
+	,Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) as Totalcost
+	--,IIf([ProdType] = 'B'
+	--	OR OD.Grade = 'com', ([TotalCost] * ((1 - [Discount]) * 100) / 100), ([unitprice] * ((1 - [discount]) * 100) / 100)) AS SELL
+	,Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) as Sell
+	--,[Sell] * [Quantity] AS ExtPrice
+	,Cast((case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) * [Quantity] as money) AS ExtPrice
+	--,IIf([extprice] &gt; 0, [extprice], [Totalcost] * [Quantity]) AS TotalPrice
+	,Cast((case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) * [Quantity] as money) AS TotalPrice
+	,O.ProjCoor
+	,O.MPorCID
+	,OD.ProductNo
+	,O.Quoter
+FROM (
+	MarketedProducts MP INNER JOIN (
+		MPOrders O INNER JOIN MPOrderDetails OD ON O.QuoteNo = OD.OrderID
+		) ON MP.ProdNo = OD.ProductNo
+	)
+INNER JOIN Customers C ON O.CustomerID = C.CustomerID
+WHERE (
+		((O.Quote) = 1)
+		AND (
+			(O.QuoteDate) BETWEEN 
+			@StartDate
+				AND 
+			@EndDate
+			)
+		AND (
+			(OD.ProductNo) NOT LIKE 'mcom%'
+			AND (OD.ProductNo) NOT LIKE 'bcom%'
+			AND (OD.ProductNo) NOT LIKE 'mfrt%'
+			AND (OD.ProductNo) NOT LIKE 'bfrt%'
+			)
+		)
+ORDER BY O.QuoteNo
+	,OD.[Item_#];</CommandText>
       </Query>
       <Fields>
-        <Field Name="NationalAccount">
-          <DataField>NationalAccount</DataField>
+        <Field Name="QuoteNo">
+          <DataField>QuoteNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Quote">
+          <DataField>Quote</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="WonLost">
+          <DataField>WonLost</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Designer">
+          <DataField>Designer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Organization">
+          <DataField>Organization</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="QuoteDate">
           <DataField>QuoteDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="OrderID">
-          <DataField>OrderID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="PONumber">
-          <DataField>PONumber</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="PO_Date">
-          <DataField>PO_Date</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="ProductNo">
-          <DataField>ProductNo</DataField>
+        <Field Name="RepLastName">
+          <DataField>RepLastName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PorNP">
-          <DataField>PorNP</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Item__">
-          <DataField>Item_#</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="Quantity">
           <DataField>Quantity</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
-        </Field>
-        <Field Name="ShipName">
-          <DataField>ShipName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ReqdByDate">
-          <DataField>ReqdByDate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="EstShip">
-          <DataField>EstShip</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="ProjCoor">
-          <DataField>ProjCoor</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ProjInvMo">
-          <DataField>ProjInvMo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="StatusOfOrder">
-          <DataField>StatusOfOrder</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ICCG_Inv_">
-          <DataField>ICCG_Inv#</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Totalcost">
           <DataField>Totalcost</DataField>
@@ -140,84 +111,24 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
           <DataField>ExtPrice</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="Proprietary">
-          <DataField>Proprietary</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="Non_Proprietary">
-          <DataField>Non-Proprietary</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
         <Field Name="TotalPrice">
           <DataField>TotalPrice</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="Discount">
-          <DataField>Discount</DataField>
-          <rd:TypeName>System.Single</rd:TypeName>
-        </Field>
-        <Field Name="TempProdNo">
-          <DataField>TempProdNo</DataField>
+        <Field Name="ProjCoor">
+          <DataField>ProjCoor</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Designer">
-          <DataField>Designer</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="QuotedBy">
-          <DataField>QuotedBy</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="OrderComplete">
-          <DataField>OrderComplete</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="MPorCID">
           <DataField>MPorCID</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Closed">
-          <DataField>Closed</DataField>
+        <Field Name="ProductNo">
+          <DataField>ProductNo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="ProjectNotes">
-          <DataField>ProjectNotes</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Likelihood">
-          <DataField>Likelihood</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="RepShipTo">
-          <DataField>RepShipTo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="RepLastName">
-          <DataField>RepLastName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Expr1">
-          <DataField>Expr1</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Expr2">
-          <DataField>Expr2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Quote">
-          <DataField>Quote</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="QtrToDliver">
-          <DataField>QtrToDliver</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Shipped">
-          <DataField>Shipped</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="NationalAcct">
-          <DataField>NationalAcct</DataField>
+        <Field Name="Quoter">
+          <DataField>Quoter</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -230,6 +141,9 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
           <Tablix Name="Tablix1">
             <TablixBody>
               <TablixColumns>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
                 </TablixColumn>
@@ -262,7 +176,7 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Quote Date</Value>
+                                  <Value>Quote No</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -292,7 +206,7 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>PONumber</Value>
+                                  <Value>Organization</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -322,7 +236,7 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>PO Date</Value>
+                                  <Value>Quote Date</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -352,7 +266,7 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Proprietary</Value>
+                                  <Value>Rep Last Name</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
@@ -384,7 +298,7 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Non Proprietary</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
@@ -416,7 +330,7 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Total Price</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
@@ -439,11 +353,103 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                         </Textbox>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox13">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Total Price</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox13</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
                   <Height>0.25in</Height>
                   <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="QuoteNo">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!QuoteNo.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>QuoteNo</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Organization">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Organization.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Organization</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="QuoteDate">
@@ -476,74 +482,14 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PONumber">
+                        <Textbox Name="RepLastName">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PONumber.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>PONumber</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="PO_Date">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!PO_Date.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>PO_Date</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Proprietary">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Proprietary.Value</Value>
+                                  <Value>=Fields!RepLastName.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
@@ -552,7 +498,7 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Proprietary</rd:DefaultName>
+                          <rd:DefaultName>RepLastName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -568,14 +514,14 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Non_Proprietary">
+                        <Textbox Name="Textbox10">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Non_Proprietary.Value</Value>
+                                  <Value>=RowNumber("QuoteDetailByCoordinator")</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
@@ -584,7 +530,39 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Non_Proprietary</rd:DefaultName>
+                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox12">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=RunningValue(ReportItems!Textbox10.Value,SUM,"QuoteDetailByCoordinator")</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox12</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -628,7 +606,6 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -637,6 +614,7 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
+                <TablixMember />
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -655,9 +633,9 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>OpenProjectsBySR</DataSetName>
+            <DataSetName>QuoteDetailByCoordinator</DataSetName>
             <Height>0.5in</Height>
-            <Width>6in</Width>
+            <Width>7in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -668,7 +646,7 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
         <Height>2in</Height>
         <Style />
       </Body>
-      <Width>6.5in</Width>
+      <Width>7in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
@@ -680,16 +658,22 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
   </ReportSections>
   <ReportParameters>
     <ReportParameter Name="StartDate">
-      <DataType>String</DataType>
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=DateAdd("m", -1, DateSerial(Year(Now()), Month(Now()), 1))</Value>
+        </Values>
+      </DefaultValue>
       <Prompt>Start Date</Prompt>
     </ReportParameter>
     <ReportParameter Name="EndDate">
-      <DataType>String</DataType>
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=DateAdd("s", -1, DateSerial(Year(Now()), Month(Now()), 1))</Value>
+        </Values>
+      </DefaultValue>
       <Prompt>End Date</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="NationalAcct">
-      <DataType>String</DataType>
-      <Prompt>National Acct</Prompt>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
@@ -707,14 +691,9 @@ ORDER BY O.NationalAccount, EstShip, O.ProjCoor</CommandText>
           <RowIndex>0</RowIndex>
           <ParameterName>EndDate</ParameterName>
         </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>NationalAcct</ParameterName>
-        </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>9f0696e2-5697-4c4f-8d89-59b32fbfab62</rd:ReportID>
+  <rd:ReportID>c573cd81-b6bb-4b6d-a419-8aed287b5b47</rd:ReportID>
 </Report>

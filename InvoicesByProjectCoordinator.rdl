@@ -21,18 +21,48 @@
             <Value>=Parameters!EndDate.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        OD.ShipDate, O.QuoteNo, O.QuoteDate, O.PO_Date, O.PONumber, O.Revision, C.Organization, OD.ProductNo, MP.VendorName, OD.Quantity, CAST(OD.UnitCost + (CASE WHEN isnull([ydsreqd], 0) 
-                         &gt; 0 THEN [ydsreqd] ELSE [YdsCOM] END * OD.FabricUnitCost + OD.UpgradeCost + OD.Foam + OD.Carton + OD.Labor) AS money) AS Totalcost, CAST(CASE WHEN [ProdType] = 'B' OR
-                         OD.Grade = 'com' THEN ((OD.UnitCost + (CASE WHEN isnull([ydsreqd], 0) &gt; 0 THEN [ydsreqd] ELSE [YdsCOM] END * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor]) * ((1 - [Discount]) * 100) / 100) 
-                         ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) END AS money) AS Sell, CAST((CASE WHEN [ProdType] = 'B' OR
-                         OD.Grade = 'com' THEN ((OD.UnitCost + (CASE WHEN isnull([ydsreqd], 0) &gt; 0 THEN [ydsreqd] ELSE [YdsCOM] END * [FabricUnitCost]) + [UpgradeCost] + [Foam] + [Carton] + [Labor]) * ((1 - [Discount]) * 100) / 100) 
-                         ELSE ([unitprice] * ((1 - [discount]) * 100) / 100) END) * OD.Quantity AS money) AS ExtPrice, O.RepLastName, O.Designer, C.Organization AS Expr1, C.Address, C.City, C.State, OD.Grade, OD.Size, MP.EdgeColor, 
-                         OD.EdgeColor AS Expr2, OD.FireCode, OD.Invoice#, MP.DimensionsPrint, MP.DetailDesc, MP.Picture, MP.ProdDesc, OD.Style, OD.AreaPgNumb, MP.AddlDesc, O.ShipName, O.ProjCoor
-FROM            MarketedProducts AS MP INNER JOIN
-                         MPOrders AS O INNER JOIN
-                         MPOrderDetails AS OD ON O.QuoteNo = OD.OrderID ON MP.ProdNo = OD.ProductNo INNER JOIN
-                         Customers AS C ON O.CustomerID = C.CustomerID
-WHERE        (OD.ShipDate BETWEEN @StartDate AND @EndDate)</CommandText>
+        <CommandText>SELECT OD.ShipDate
+	,O.QuoteNo
+	,O.QuoteDate
+	,O.PO_Date
+	,O.PONumber
+	,O.Revision
+	,C.Organization
+	,OD.ProductNo
+	,MP.VendorName
+	,OD.Quantity
+	,Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) as Totalcost
+	,Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) as Sell
+	,Cast(case when(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) = 0 then
+	Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) * [Quantity] else 
+	Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) * Quantity end as money) AS ExtPrice
+	,O.RepLastName
+	,O.Designer
+	,C.Organization AS Expr1
+	,C.Address
+	,C.City
+	,C.STATE
+	,OD.Grade
+	,OD.Size
+	,MP.EdgeColor
+	,OD.EdgeColor AS Expr2
+	,OD.FireCode
+	,OD.Invoice#
+	,MP.DimensionsPrint
+	,MP.DetailDesc
+	,MP.Picture
+	,MP.ProdDesc
+	,OD.Style
+	,OD.AreaPgNumb
+	,MP.AddlDesc
+	,O.ShipName
+	,O.ProjCoor
+FROM MarketedProducts AS MP
+INNER JOIN MPOrders AS O
+INNER JOIN MPOrderDetails AS OD ON O.QuoteNo = OD.OrderID ON MP.ProdNo = OD.ProductNo INNER JOIN Customers AS C ON O.CustomerID = C.CustomerID WHERE (
+		OD.ShipDate BETWEEN @StartDate
+			AND @EndDate
+		)</CommandText>
       </Query>
       <Fields>
         <Field Name="ShipDate">
@@ -108,7 +138,7 @@ WHERE        (OD.ShipDate BETWEEN @StartDate AND @EndDate)</CommandText>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="State">
-          <DataField>State</DataField>
+          <DataField>STATE</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Grade">

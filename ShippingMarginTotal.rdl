@@ -6,47 +6,67 @@
     <DataSource Name="SQLPrivy">
       <DataSourceReference>SQLPrivy</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>a0ef5639-ef5c-4bd6-a131-cb27a639a2a0</rd:DataSourceID>
+      <rd:DataSourceID>d558fec9-20ce-4bec-ae54-937735f15096</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="AccountShipmentSummary">
+    <DataSet Name="ShippingMarginTotal">
       <Query>
         <DataSourceName>SQLPrivy</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name="@StartShipDate">
-            <Value>=Parameters!StartShipDate.Value</Value>
+          <QueryParameter Name="@StartDate">
+            <Value>=Parameters!StartDate.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="@EndShipDate">
-            <Value>=Parameters!EndShipDate.Value</Value>
+          <QueryParameter Name="@EndDate">
+            <Value>=Parameters!EndDate.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT ShippedBase.RepShipTo
-	,ShippedBase.StatusOfOrder
-	,ShippedBase.NationalAcct
-	,ShippedBase.Completed
-	,ShippedBase.OrderID
-	,Sum(IIf([PorNP] = 'P', [ExtPrice], 0)) AS Proprietary
-	,Sum(IIf([PorNP] = 'N', [EXTPrice], 0)) AS [Non-Proprietary]
-	,ShippedBase.ShipName
-	,(Sum(IIf([PorNP] = 'P', [ExtPrice], 0))) + (Sum(IIf([PorNP] = 'N', [EXTPrice], 0))) AS OrderTotal
-	--,ShippedBase.Invoice#
+        <CommandText>SELECT SUM(BookingMarginTotal.SumOfExtCost) AS SumOfExtCost
+	,SUM(BookingMarginTotal.SumOfExtPrice) AS SumOfExtPrice
+	,AVG(BookingMarginTotal.AvgOfMargin) AS AvgOfMargin
+	,BookingMarginTotal.VendorName
+	,Sum(BookingMarginTotal.SumOfQuantity) AS SumOfQuantity
+	,BookingMarginTotal.ShipMo
+	,BookingMarginTotal.ShipYr
 FROM (
 
-SELECT O.RepShipTo
-	,O.StatusOfOrder
-	,O.RepLastName
-	,O.ShipName
+SELECT Sum(BookingsMargin.ExtCost) AS SumOfExtCost
+	,Sum(BookingsMargin.ExtPrice) AS SumOfExtPrice
+	,Avg(BookingsMargin.Margin) AS AvgOfMargin
+	,BookingsMargin.VendorName
+	,Sum(BookingsMargin.Quantity) AS SumOfQuantity
+	,Month(Completed) AS ShipMo
+	,Cast(Year(Completed) as Int) AS ShipYr
+FROM (
+SELECT O.ShipName
+	,MP.VendorName
 	,OD.ProductNo
-	,Case When Left(ProductNo, 2) = 'IH' Then 'P' Else 'N' End as PorNP
+	,OD.Completed
+	--,IIf(Left(ProductNo, 2) = 'IH', 'Proprietary', 'Non-Proprietary') AS PorNP
+	,case when (Left(ProductNo,2) = 'IH') then 'Proprietary' else 'Non-Proprietary' End AS PorNP
 	,OD.Quantity
+	,OD.UnitCost
+	--,OD.UnitCost + (IIf(ydsreqd &gt; 0, ISNull(ydsreqd,0), IsNull(YdsCOM,0)) * FabricUnitCost) + UpgradeCost + Foam + Carton + Labor AS TotalCost
 	,Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) as Totalcost
+	--,IIf(ProdType = "B"
+		--OR OD.Grade = "com", (TotalCost * ((1 - Discount) * 100) / 100), (unitprice * ((1 - discount) * 100) / 100)) AS SELL
 	,Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) as Sell
+	--,TotalCost * Quantity AS ExtCost
+	,Cast(OD.Quantity * (OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) AS ExtCost
+	--,IIf(Sell = 0, TotalCost * Quantity, Sell * Quantity) AS ExtPrice
 	,Cast(case when(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) = 0 then
 	Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) * [Quantity] else 
 	Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) * Quantity end as money) AS ExtPrice
-	,O.PONumber
-	,O.QuoteDate
+	--,IIf(ExtCost &gt; 0.01, (ExtPrice - ExtCost) / ExtCost, 0) AS Margin
+	,Cast(case when(case when(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) = 0 then
+	Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) * [Quantity] else 
+	Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) * Quantity end) &gt; 0 then
+	Cast(case when(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) = 0 then
+	Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) * [Quantity] else 
+	Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) * Quantity end as money) else
+	Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) * Quantity end as money) -
+	Cast(OD.Quantity * (OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) AS Margin
+	--,IIf(extprice &gt; 0, extprice, totalcost * Quantity) AS Total
 	,Cast(case when(case when(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) = 0 then
 	Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) * [Quantity] else 
 	Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) * Quantity end) &gt; 0 then
@@ -54,124 +74,101 @@ SELECT O.RepShipTo
 	Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) * [Quantity] else 
 	Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) * Quantity end as money) else
 	Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) * Quantity end as money) as TotalPrice
-	,Year(O.QuoteDate) AS Expr1
-	,O.MPorCID
-	,OD.OrderID
-	,OD.OrderDetailID
+	,O.PO_Date
 	,OD.ShipDate
-	,Year(OD.ShipDate) AS ShipYear
-	,C.NationalAcct
-	,OD.Completed
-	,OD.[ICCG_Inv#]
-	--,OD.Invoice#
-FROM 
-	MarketedProducts MP RIGHT JOIN 
-		MPOrders O RIGHT JOIN MPOrderDetails OD ON O.QuoteNo = OD.OrderID
-		 ON MP.ProdNo = OD.ProductNo
-	
-LEFT JOIN Customers C ON O.CustomerID = C.CustomerID
+	,O.MPorCID
+	,O.PONumber
+	,O.CustomerID
+	,OD.TempProdNo
+FROM MarketedProducts MP
+RIGHT JOIN (
+	MPOrders O RIGHT JOIN MPOrderDetails OD ON O.QuoteNo = OD.OrderID
+	) ON MP.ProdNo = OD.ProductNo
 WHERE (
-		(
-			(OD.ProductNo) NOT LIKE 'mcom%'
-			AND (OD.ProductNo) NOT LIKE 'bcom%'
-			AND (OD.ProductNo) NOT LIKE 'mfrt%'
-			AND (OD.ProductNo) NOT LIKE 'bfrt%'
-			)
-		AND ((IIf(Left([ProductNo], 2) = 'IH', 'P', 'N')) = 'N')
-		AND ((OD.ShipDate) IS NOT NULL)
+		((O.ShipName) NOT LIKE 'ICCG craig%')
 		AND (
-			(OD.[ICCG_Inv#]) &lt;&gt; 1
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 2
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 111
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 222
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 333
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 444
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 555
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 777
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 888
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 999
-			)			
+			(MP.VendorName) NOT LIKE 'carroll%'
+			AND (MP.VendorName) NOT LIKE 'proprietary'
+			)
+		AND ((OD.ProductNo) NOT LIKE '%frt%')
+		AND (
+			(OD.Completed) BETWEEN 
+			@StartDate
+				AND 
+			@EndDate
+			)
+		AND ((IIf(Left(ProductNo, 2) = 'IH', 'Proprietary', 'Non-Proprietary')) &lt;&gt; 'Proprietary')
+		--AND case when (Left(ProductNo, 2) = 'IH') then 'Proprietary' else 'Non-Proprietary' end &lt;&gt; 'Proprietary')
+		AND ((O.PONumber) NOT LIKE 24928)
+		AND ((O.CustomerID) &lt;&gt; 3991)
+		AND ((OD.TempProdNo) IS NULL)
 		)
 	OR (
+		((O.ShipName) NOT LIKE 'ICCG craig%')
+		AND (
+			(MP.VendorName) NOT LIKE 'carroll%'
+			AND (MP.VendorName) NOT LIKE 'proprietary'
+			)
+		AND ((OD.ProductNo) NOT LIKE '%frt%')
+		AND (
+			(OD.Completed) BETWEEN 
+			@StartDate
+				AND 
+			@EndDate
+			)
+		AND ((IIf(Left(ProductNo, 2) = 'IH', 'Proprietary', 'Non-Proprietary')) &lt;&gt; 'Proprietary')
+		--AND case when (Left(ProductNo, 2) = 'IH') then 'Proprietary' else 'Non-Proprietary' end &lt;&gt; 'Proprietary'
+		AND ((O.PONumber) NOT LIKE 24897)
+		AND ((O.CustomerID) &lt;&gt; 3991)
+		AND ((OD.TempProdNo) IS NULL)
+		)
+--ORDER BY case when (Left(ProductNo, 2) = 'IH') then 'Proprietary' else 'Non-Proprietary' end
+--	,O.PO_Date
+	) AS BookingsMargin
+GROUP BY BookingsMargin.VendorName
+	,Month(Completed)
+	,Cast(Year(Completed) as Int)
+--ORDER BY Sum(BookingsMargin.ExtCost) DESC
+--	,BookingsMargin.VendorName
+	) AS BookingMarginTotal
+WHERE (
 		(
-			(OD.ProductNo) NOT LIKE 'mcom%'
-			AND (OD.ProductNo) NOT LIKE 'bcom%'
-			AND (OD.ProductNo) NOT LIKE 'mfrt%'
-			AND (OD.ProductNo) NOT LIKE 'bfrt%'
-			)
-		AND ((IIf(Left([ProductNo], 2) = 'IH', 'P', 'N')) = 'P')
-		AND ((OD.ShipDate) IS NOT NULL)
-		AND (
-			(OD.[ICCG_Inv#]) &lt;&gt; 1
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 2
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 222
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 333
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 444
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 555
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 777
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 888
-			AND (OD.[ICCG_Inv#]) &lt;&gt; 999
+			(BookingMarginTotal.VendorName) NOT LIKE 'Carroll Healthcare'
+			AND (BookingMarginTotal.VendorName) NOT LIKE 'Proprietary'
 			)
 		)
-) AS ShippedBase
-GROUP BY ShippedBase.RepShipTo
-	,ShippedBase.StatusOfOrder
-	,ShippedBase.NationalAcct
-	,ShippedBase.Completed
-	,ShippedBase.OrderID
-	,ShippedBase.ShipName
-	--,ShippedBase.Invoice#
-HAVING (
-		((ShippedBase.StatusOfOrder) = 'Order')
-		AND (
-			(ShippedBase.Completed) BETWEEN
-			--'10/1/2017' 
-			@StartShipDate
-				AND
-			--'10/31/2017'
-			@EndShipDate
-			)
-		)
-ORDER BY ShippedBase.NationalAcct
-	,ShippedBase.OrderID
-		;</CommandText>
+GROUP BY BookingMarginTotal.VendorName
+	,BookingMarginTotal.ShipMo
+	,BookingMarginTotal.ShipYr;</CommandText>
       </Query>
       <Fields>
-        <Field Name="RepShipTo">
-          <DataField>RepShipTo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="StatusOfOrder">
-          <DataField>StatusOfOrder</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ShipName">
-          <DataField>ShipName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Proprietary">
-          <DataField>Proprietary</DataField>
+        <Field Name="SumOfExtCost">
+          <DataField>SumOfExtCost</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="Non_Proprietary">
-          <DataField>Non-Proprietary</DataField>
+        <Field Name="SumOfExtPrice">
+          <DataField>SumOfExtPrice</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="OrderTotal">
-          <DataField>OrderTotal</DataField>
+        <Field Name="AvgOfMargin">
+          <DataField>AvgOfMargin</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="OrderID">
-          <DataField>OrderID</DataField>
+        <Field Name="VendorName">
+          <DataField>VendorName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SumOfQuantity">
+          <DataField>SumOfQuantity</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ShipMo">
+          <DataField>ShipMo</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="NationalAcct">
-          <DataField>NationalAcct</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Completed">
-          <DataField>Completed</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+        <Field Name="ShipYr">
+          <DataField>ShipYr</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -180,66 +177,29 @@ ORDER BY ShippedBase.NationalAcct
     <ReportSection>
       <Body>
         <ReportItems>
-          <Tablix Name="Tablix1">
+          <Tablix Name="Tablix2">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>2in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.4in</Width>
+                  <Width>1.25in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.25in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.25in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.25in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
                   <Height>0.25in</Height>
                   <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Order ID</Value>
-                                  <Style>
-                                    <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox3">
@@ -249,7 +209,7 @@ ORDER BY ShippedBase.NationalAcct
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Facility</Value>
+                                  <Value>Vendor / Name</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontFamily>Times New Roman</FontFamily>
@@ -279,14 +239,88 @@ ORDER BY ShippedBase.NationalAcct
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox5">
+                        <Textbox Name="Textbox2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Proprietary</Value>
+                                  <Value>Quantities</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#24509c</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox7">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Total Cost</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#24509c</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox9">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Total Sell</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontFamily>Times New Roman</FontFamily>
@@ -316,14 +350,14 @@ ORDER BY ShippedBase.NationalAcct
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox7">
+                        <Textbox Name="Textbox10">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Non-Proprietary</Value>
+                                  <Value>Avg Margin</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontFamily>Times New Roman</FontFamily>
@@ -337,44 +371,7 @@ ORDER BY ShippedBase.NationalAcct
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox7</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox9">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Order Total</Value>
-                                  <Style>
-                                    <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox9</rd:DefaultName>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -395,61 +392,14 @@ ORDER BY ShippedBase.NationalAcct
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="NationalAcct1">
+                        <Textbox Name="ShipMo3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="Account: " &amp; Fields!NationalAcct.Value</Value>
-                                  <Style>
-                                    <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>NationalAcct1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <ColSpan>5</ColSpan>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
-                  </TablixCells>
-                </TablixRow>
-                <TablixRow>
-                  <Height>0.25in</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="OrderID">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!OrderID.Value</Value>
+                                  <Value>=Fields!VendorName.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -458,7 +408,7 @@ ORDER BY ShippedBase.NationalAcct
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>OrderID</rd:DefaultName>
+                          <rd:DefaultName>ShipMo</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -474,21 +424,25 @@ ORDER BY ShippedBase.NationalAcct
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ShipName">
+                        <Textbox Name="ShipYr2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ShipName.Value</Value>
-                                  <Style />
+                                  <Value>=Sum(Fields!SumOfQuantity.Value)</Value>
+                                  <Style>
+                                    <Format>#,0;(#,0)</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>ShipName</rd:DefaultName>
+                          <rd:DefaultName>ShipYr1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -504,23 +458,23 @@ ORDER BY ShippedBase.NationalAcct
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Proprietary">
+                        <Textbox Name="SumOfExtCost2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Proprietary.Value</Value>
+                                  <Value>=Sum(Fields!SumOfExtCost.Value)</Value>
                                   <Style>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                    <Format>'$'#,0;('$'#,0)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Proprietary</rd:DefaultName>
+                          <rd:DefaultName>SumOfExtCost1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -537,58 +491,24 @@ ORDER BY ShippedBase.NationalAcct
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PorNP2">
+                        <Textbox Name="SumOfExtPrice2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Non_Proprietary.Value</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>PorNP</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="OrderTotal">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!OrderTotal.Value</Value>
+                                  <Value>=Sum(Fields!SumOfExtPrice.Value)</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                    <Format>'$'#,0;('$'#,0)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>OrderTotal</rd:DefaultName>
+                          <rd:DefaultName>SumOfExtPrice1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -599,6 +519,39 @@ ORDER BY ShippedBase.NationalAcct
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                             <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox47">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=IIF(SUM(Fields!SumOfExtPrice.Value)= 0,0,Sum(Fields!SumOfExtPrice.Value) - Sum(Fields!SumOfExtCost.Value)) / IIF(SUM(Fields!SumOfExtPrice.Value)=0,1,SUM(Fields!SumOfExtPrice.Value))</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <Format>0.00%</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox45</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -610,26 +563,25 @@ ORDER BY ShippedBase.NationalAcct
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox26">
+                        <Textbox Name="Textbox120">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="Account Totals:"</Value>
+                                  <Value>TOTAL</Value>
                                   <Style>
-                                    <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox26</rd:DefaultName>
+                          <rd:DefaultName>Textbox120</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -641,30 +593,98 @@ ORDER BY ShippedBase.NationalAcct
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <ColSpan>2</ColSpan>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell />
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox30">
+                        <Textbox Name="Textbox121">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Proprietary.Value)</Value>
+                                  <Value>=Sum(Fields!SumOfQuantity.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox121</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox122">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!SumOfExtCost.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>'$'#,0;('$'#,0)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox122</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox123">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!SumOfExtPrice.Value)</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>'$'#,0;('$'#,0)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox30</rd:DefaultName>
+                          <rd:DefaultName>Textbox123</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -681,99 +701,25 @@ ORDER BY ShippedBase.NationalAcct
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox31">
+                        <Textbox Name="Textbox48">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Non_Proprietary.Value)</Value>
+                                  <Value>=IIF(SUM(Fields!SumOfExtPrice.Value)= 0,0,Sum(Fields!SumOfExtPrice.Value) - Sum(Fields!SumOfExtCost.Value)) / IIF(SUM(Fields!SumOfExtPrice.Value)=0,1,SUM(Fields!SumOfExtPrice.Value))</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox31</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox32">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!OrderTotal.Value)</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox32</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                  </TablixCells>
-                </TablixRow>
-                <TablixRow>
-                  <Height>0.25in</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox15">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>="Grand Total"</Value>
-                                  <Style>
-                                    <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Times New Roman</FontFamily>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
+                                    <Format>0.00%</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox15</rd:DefaultName>
+                          <rd:DefaultName>Textbox45</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -783,119 +729,6 @@ ORDER BY ShippedBase.NationalAcct
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <ColSpan>2</ColSpan>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell />
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox17">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!Proprietary.Value)</Value>
-                                  <Style>
-                                    <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
-                                    <Color>#24509c</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox17</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox18">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!Non_Proprietary.Value)</Value>
-                                  <Style>
-                                    <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
-                                    <Color>#24509c</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox18</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox19">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!OrderTotal.Value)</Value>
-                                  <Style>
-                                    <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
-                                    <Color>#24509c</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox19</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -915,52 +748,34 @@ ORDER BY ShippedBase.NationalAcct
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
-                <TablixMember />
                 <TablixMember>
-                  <Group Name="NationalAcct">
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="VendorName">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!NationalAcct.Value</GroupExpression>
+                      <GroupExpression>=Fields!VendorName.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!NationalAcct.Value</Value>
+                      <Value>=Sum(Fields!SumOfExtCost.Value)</Value>
+                      <Direction>Descending</Direction>
                     </SortExpression>
                   </SortExpressions>
                   <TablixMembers>
                     <TablixMember />
-                    <TablixMember>
-                      <Group Name="Completed">
-                        <GroupExpressions>
-                          <GroupExpression>=Fields!Completed.Value</GroupExpression>
-                        </GroupExpressions>
-                      </Group>
-                      <SortExpressions>
-                        <SortExpression>
-                          <Value>=Fields!Completed.Value</Value>
-                        </SortExpression>
-                      </SortExpressions>
-                      <TablixMembers>
-                        <TablixMember>
-                          <Group Name="Details" />
-                          <SortExpressions>
-                            <SortExpression>
-                              <Value>=Fields!OrderID.Value</Value>
-                            </SortExpression>
-                          </SortExpressions>
-                        </TablixMember>
-                      </TablixMembers>
-                    </TablixMember>
-                    <TablixMember />
                   </TablixMembers>
                 </TablixMember>
-                <TablixMember />
+                <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>AccountShipmentSummary</DataSetName>
-            <Top>0.04167in</Top>
-            <Height>1.25in</Height>
-            <Width>8.4in</Width>
+            <DataSetName>ShippingMarginTotal</DataSetName>
+            <Height>0.75in</Height>
+            <Width>7in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -968,10 +783,10 @@ ORDER BY ShippedBase.NationalAcct
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>1.29167in</Height>
+        <Height>0.79167in</Height>
         <Style />
       </Body>
-      <Width>8.4in</Width>
+      <Width>7in</Width>
       <Page>
         <PageHeader>
           <Height>1.14583in</Height>
@@ -983,7 +798,7 @@ ORDER BY ShippedBase.NationalAcct
               <Value>Invacare1</Value>
               <Sizing>FitProportional</Sizing>
               <Height>1.14583in</Height>
-              <Width>3.04167in</Width>
+              <Width>2in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -997,7 +812,7 @@ ORDER BY ShippedBase.NationalAcct
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Account Shipment Summary</Value>
+                      <Value>Margin Report - Shipped Product</Value>
                       <Style>
                         <FontStyle>Italic</FontStyle>
                         <FontFamily>Times New Roman</FontFamily>
@@ -1013,10 +828,10 @@ ORDER BY ShippedBase.NationalAcct
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>0.19965in</Top>
-              <Left>3.05556in</Left>
+              <Top>0.10764in</Top>
+              <Left>2.02778in</Left>
               <Height>0.41667in</Height>
-              <Width>5.34444in</Width>
+              <Width>4.97222in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -1035,27 +850,24 @@ ORDER BY ShippedBase.NationalAcct
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Ship Dates:</Value>
-                      <Style>
-                        <FontStyle>Italic</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>12pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <Color>#1d5196</Color>
-                      </Style>
+                      <Value>="Product Shipped " &amp; Parameters!StartDate.Value &amp; " through " &amp; Parameters!EndDate.Value</Value>
+                      <Style />
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <TextAlign>Center</TextAlign>
                   </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.69618in</Top>
-              <Left>3.05556in</Left>
+              <Top>0.82639in</Top>
+              <Left>2.02778in</Left>
               <Height>0.25in</Height>
-              <Width>2.34444in</Width>
+              <Width>4.97222in</Width>
               <ZIndex>2</ZIndex>
+              <Visibility>
+                <Hidden>=(Globals!RenderFormat.Name = "EXCEL")</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1066,15 +878,20 @@ ORDER BY ShippedBase.NationalAcct
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Textbox8">
+            <Textbox Name="Textbox1">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!StartShipDate.Value &amp; "-" &amp; Parameters!EndShipDate.Value</Value>
-                      <Style />
+                      <Value>="Includes IID &amp; Marketed Products Orders"</Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>#24509c</Color>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -1082,15 +899,12 @@ ORDER BY ShippedBase.NationalAcct
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.69618in</Top>
-              <Left>5.4in</Left>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>0.55in</Top>
+              <Left>2in</Left>
               <Height>0.25in</Height>
-              <Width>3in</Width>
+              <Width>5in</Width>
               <ZIndex>3</ZIndex>
-              <Visibility>
-                <Hidden>=(Globals!RenderFormat.Name = "EXCEL")</Hidden>
-              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1109,7 +923,7 @@ ORDER BY ShippedBase.NationalAcct
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>0.30208in</Height>
+          <Height>0.34375in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1132,9 +946,9 @@ ORDER BY ShippedBase.NationalAcct
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox24</rd:DefaultName>
-              <Top>0.02431in</Top>
+              <Top>0.02778in</Top>
               <Height>0.25in</Height>
-              <Width>3.04167in</Width>
+              <Width>3.25in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1162,9 +976,10 @@ ORDER BY ShippedBase.NationalAcct
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox25</rd:DefaultName>
-              <Left>6.4in</Left>
+              <Top>0.02778in</Top>
+              <Left>5.75in</Left>
               <Height>0.25in</Height>
-              <Width>2in</Width>
+              <Width>1.25in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -1192,23 +1007,23 @@ ORDER BY ShippedBase.NationalAcct
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="StartShipDate">
+    <ReportParameter Name="StartDate">
       <DataType>DateTime</DataType>
       <DefaultValue>
         <Values>
-          <Value>=DateAdd("m", -1, DateSerial(Year(Now()), Month(Now()), 1))</Value>
+          <Value>=DateAdd("m", -2, DateSerial(Year(Now()), Month(Now()), 1))</Value>
         </Values>
       </DefaultValue>
-      <Prompt>Enter Start Ship Date:</Prompt>
+      <Prompt>Enter Start Date:</Prompt>
     </ReportParameter>
-    <ReportParameter Name="EndShipDate">
+    <ReportParameter Name="EndDate">
       <DataType>DateTime</DataType>
       <DefaultValue>
         <Values>
           <Value>=DateAdd("s", -1, DateSerial(Year(Now()), Month(Now()), 1))</Value>
         </Values>
       </DefaultValue>
-      <Prompt>Enter End Ship Date:</Prompt>
+      <Prompt>Enter End Date:</Prompt>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
@@ -1217,14 +1032,14 @@ ORDER BY ShippedBase.NationalAcct
       <NumberOfRows>2</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
+          <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>StartShipDate</ParameterName>
+          <ParameterName>StartDate</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>3</ColumnIndex>
+          <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>EndShipDate</ParameterName>
+          <ParameterName>EndDate</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
@@ -1250,5 +1065,5 @@ xE5q3oPayRzTNddcY1Sxt0VoW1C71A4YNMj+rJq2F12trfa7tfPOO8/cTzjhBJN+ww03mK1N0LazceNG
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>b2429a4a-5356-41ef-a7dd-c215bd9e0245</rd:ReportID>
+  <rd:ReportID>0b049457-9642-4068-947b-fb6bb3bfb51c</rd:ReportID>
 </Report>
