@@ -1655,7 +1655,7 @@ ORDER BY O.QuoteNo
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Quote Report w/Detail by Coordinator</Value>
+                      <Value>Quote Report w/Detail by Quoted By</Value>
                       <Style>
                         <FontStyle>Italic</FontStyle>
                         <FontFamily>Times New Roman</FontFamily>

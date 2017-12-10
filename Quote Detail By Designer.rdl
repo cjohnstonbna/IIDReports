@@ -426,7 +426,7 @@ ORDER BY O.QuoteNo
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="Coordinator: " &amp; Fields!Quoter.Value</Value>
+                                  <Value>="Designer: " &amp; Fields!Designer.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
@@ -786,7 +786,7 @@ ORDER BY O.QuoteNo
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=RunningValue(Fields!QuoteNo.Value,Count,"Quoter")</Value>
+                                  <Value>=RunningValue(Fields!QuoteNo.Value,Count,"Designer")</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
@@ -1082,7 +1082,7 @@ ORDER BY O.QuoteNo
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="Total for Coordinator: " &amp; Fields!Quoter.Value</Value>
+                                  <Value>="Total for Designer: " &amp; Fields!Designer.Value</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontFamily>Times New Roman</FontFamily>
@@ -1234,7 +1234,7 @@ ORDER BY O.QuoteNo
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=RunningValue(Fields!QuoteNo.Value,Count,"Quoter")</Value>
+                                  <Value>=RunningValue(Fields!QuoteNo.Value,Count,"Designer")</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
@@ -1569,14 +1569,14 @@ ORDER BY O.QuoteNo
                   <RepeatOnNewPage>true</RepeatOnNewPage>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="Quoter">
+                  <Group Name="Designer">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Quoter.Value</GroupExpression>
+                      <GroupExpression>=Fields!Designer.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Quoter.Value</Value>
+                      <Value>=Fields!Designer.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixMembers>
@@ -1655,7 +1655,7 @@ ORDER BY O.QuoteNo
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Quote Report w/Detail by Coordinator</Value>
+                      <Value>Quote Report w/Detail by Designer</Value>
                       <Style>
                         <FontStyle>Italic</FontStyle>
                         <FontFamily>Times New Roman</FontFamily>

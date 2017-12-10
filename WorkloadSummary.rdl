@@ -1225,7 +1225,7 @@ ORDER BY O.Designer,
                 <TablixMember>
                   <Group Name="ProjCoor">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!ProjCoor.Value</GroupExpression>
+                      <GroupExpression>=IIF(IsNothing(Fields!ProjCoor.Value),Fields!Designer.Value,Fields!ProjCoor.Value)</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
@@ -1285,7 +1285,7 @@ ORDER BY O.Designer,
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>1.79167in</Height>
+        <Height>1.54167in</Height>
         <Style />
       </Body>
       <Width>7.92709in</Width>
@@ -1476,7 +1476,7 @@ ORDER BY O.Designer,
       <DataType>DateTime</DataType>
       <DefaultValue>
         <Values>
-          <Value>=DateAdd("m", -2, DateSerial(Year(Now()), Month(Now()), 1))</Value>
+          <Value>=DateAdd("m", -1, DateSerial(Year(Now()), Month(Now()), 1))</Value>
         </Values>
       </DefaultValue>
       <Prompt>Enter Start Date:</Prompt>
@@ -1485,7 +1485,7 @@ ORDER BY O.Designer,
       <DataType>DateTime</DataType>
       <DefaultValue>
         <Values>
-          <Value>=DateAdd("d", -2, DateSerial(Year(Now()), Month(Now()), 1))</Value>
+          <Value>=DateAdd("s", -1, DateSerial(Year(Now()), Month(Now()), 1))</Value>
         </Values>
       </DefaultValue>
       <Prompt>Enter End Date:</Prompt>
