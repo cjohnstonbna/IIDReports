@@ -6,107 +6,116 @@
     <DataSource Name="SQLPrivy">
       <DataSourceReference>SQLPrivy</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>8037d5f8-e799-41d9-b0c4-317ad21bc76c</rd:DataSourceID>
+      <rd:DataSourceID>aa692f04-b90b-4a0d-8916-3b627de4441e</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="OpenQuotes">
+    <DataSet Name="ConsulateDetails">
       <Query>
         <DataSourceName>SQLPrivy</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="@StartQuoteDate">
-            <Value>=Parameters!StartQuoteDate.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@EndQuoteDate">
-            <Value>=Parameters!EndQuoteDate.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandText>SELECT QuoteStatus.SELL
-	,QuoteStatus.QuoteDate
-	,QuoteStatus.RepShipTo
-	,QuoteStatus.OrderID
-	,QuoteStatus.ShipName
-	,QuoteStatus.RepLastName
-	,QuoteStatus.StatusOfOrder
-FROM 
-(
-SELECT OD.ProductNo
-	,OD.Quantity
-	,Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) as Totalcost
-	,Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) as Sell
-	,O.QuoteDate
-	,O.RepShipTo
-	,O.PO_Date
-	,OD.OrderID
-	,OD.OrderDetailID
-	,O.ShipName
-	,O.RepLastName
+        <CommandText>SELECT O.QuoteNo
 	,O.StatusOfOrder
-	,IIf([statusoforder] = 'Budgetary', 1, 0) AS Budgetary
-	,IIf([statusoforder] = 'Bid', 1, 0) AS Bid
-	,IIf([statusoforder] = 'Order', 1, 0) AS [Order]
-	,IIf([statusoforder] = 'Lost', 1, 0) AS Lost
-	,IIf([statusoforder] = 'Quote', 1, 0) AS Quote
-	,IIf([statusoforder] = 'Cancelled', 1, 0) AS Cancelled
-	,IIf([statusoforder] = 'Price List', 1, 0) AS PriceList
-	,Cast(case when(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) = 0 then
-	Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) * [Quantity] else 
-	Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) * Quantity end as money) AS ExtPrice
-FROM MarketedProducts MP
-RIGHT JOIN (
-	MPOrders O RIGHT JOIN MPOrderDetails OD ON O.QuoteNo = OD.OrderID
-	) ON MP.ProdNo = OD.ProductNo
-WHERE 
-		(
+	,OD.[ICCG_Inv#] AS ICCG_InvNo
+	,O.ShipName
+	,OD.ProductNo
+	,O.PONumber
+	,C.NationalAcct
+	,MP.VendorName
+	,OD.[Item_#] AS Item_No
+FROM (
+	MarketedProducts MP RIGHT JOIN (
+		MPOrders O RIGHT JOIN MPOrderDetails OD ON O.QuoteNo = OD.OrderID
+		) ON MP.ProdNo = OD.ProductNo
+	)
+LEFT JOIN Customers C ON O.CustomerID = C.CustomerID
+WHERE (
+		((O.StatusOfOrder) = 'Order')
+		AND (
+			(OD.[ICCG_Inv#]) = 0
+			OR (OD.[ICCG_Inv#]) IS NULL
+			)
+		AND (
 			(OD.ProductNo) NOT LIKE 'mcom%'
 			AND (OD.ProductNo) NOT LIKE 'bcom%'
 			AND (OD.ProductNo) NOT LIKE 'mfrt%'
 			AND (OD.ProductNo) NOT LIKE 'bfrt%'
 			)
+		AND ((C.NationalAcct) = 'Consulate')
+		AND ((IIf(Left([ProductNo], 2) = 'IH', 'P', 'N')) = 'P')
 		AND (
-			(O.QuoteDate) BETWEEN @StartQuoteDate
-				AND @EndQuoteDate
+			(
+				(OD.TempProdNo) IS NULL
+				OR (OD.TempProdNo) &lt;&gt; 'Yes'
+				)
+			AND (
+				(OD.TempProdNo) IS NULL
+				OR (OD.TempProdNo) &lt;&gt; 'Yes'
+				)
 			)
 		)
-AS QuoteStatus
-
-WHERE (
-		(
-			(QuoteStatus.StatusOfOrder) = 'Bid'
-			OR (QuoteStatus.StatusOfOrder) = 'Quote'
-			OR (QuoteStatus.StatusOfOrder) = 'Budgetary'
-			OR (QuoteStatus.StatusOfOrder) = 'Price List'
+	OR (
+		((O.StatusOfOrder) = 'Order')
+		AND (
+			(OD.[ICCG_Inv#]) = 0
+			OR (OD.[ICCG_Inv#]) IS NULL
 			)
-		);</CommandText>
+		AND (
+			(OD.ProductNo) NOT LIKE 'mcom%'
+			AND (OD.ProductNo) NOT LIKE 'bcom%'
+			AND (OD.ProductNo) NOT LIKE 'mfrt%'
+			AND (OD.ProductNo) NOT LIKE 'bfrt%'
+			)
+		AND ((C.NationalAcct) = 'Consulate')
+		AND ((IIf(Left([ProductNo], 2) = 'IH', 'P', 'N')) = 'N')
+		AND (
+			(
+				(OD.TempProdNo) IS NULL
+				OR (OD.TempProdNo) &lt;&gt; 'Yes'
+				)
+			AND (
+				(OD.TempProdNo) IS NULL
+				OR (OD.TempProdNo) &lt;&gt; 'Yes'
+				)
+			)
+		)
+ORDER BY IIf(Left([ProductNo], 2) = 'IH', 'P', 'N');</CommandText>
       </Query>
       <Fields>
-        <Field Name="SELL">
-          <DataField>SELL</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="QuoteNo">
+          <DataField>QuoteNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="QuoteDate">
-          <DataField>QuoteDate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="RepShipTo">
-          <DataField>RepShipTo</DataField>
+        <Field Name="StatusOfOrder">
+          <DataField>StatusOfOrder</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="OrderID">
-          <DataField>OrderID</DataField>
+        <Field Name="ICCG_InvNo">
+          <DataField>ICCG_InvNo</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="ShipName">
           <DataField>ShipName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="RepLastName">
-          <DataField>RepLastName</DataField>
+        <Field Name="ProductNo">
+          <DataField>ProductNo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="StatusOfOrder">
-          <DataField>StatusOfOrder</DataField>
+        <Field Name="PONumber">
+          <DataField>PONumber</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NationalAcct">
+          <DataField>NationalAcct</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VendorName">
+          <DataField>VendorName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Item_No">
+          <DataField>Item_No</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -122,70 +131,31 @@ WHERE (
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
+                  <Width>1.22917in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.19792in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.83333in</Width>
+                </TablixColumn>
+                <TablixColumn>
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.6875in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3in</Width>
-                </TablixColumn>
-                <TablixColumn>
                   <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.65625in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.21875in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
-                <TablixRow>
-                  <Height>0.25in</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="RepLastName">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!RepLastName.Value</Value>
-                                  <Style>
-                                    <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Arial</FontFamily>
-                                    <FontSize>14pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>RepLastName</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <ColSpan>6</ColSpan>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
-                  </TablixCells>
-                </TablixRow>
                 <TablixRow>
                   <Height>0.25in</Height>
                   <TablixCells>
@@ -198,11 +168,9 @@ WHERE (
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Order ID</Value>
+                                  <Value>Quote No</Value>
                                   <Style>
-                                    <FontStyle>Italic</FontStyle>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -234,11 +202,9 @@ WHERE (
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Date</Value>
+                                  <Value>Status Of Order</Value>
                                   <Style>
-                                    <FontStyle>Italic</FontStyle>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -270,11 +236,9 @@ WHERE (
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Ship To Rep:</Value>
+                                  <Value>ICCG Inv No</Value>
                                   <Style>
-                                    <FontStyle>Italic</FontStyle>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -306,12 +270,10 @@ WHERE (
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Ship To Name:</Value>
+                                  <Value>Ship Name</Value>
                                   <Style>
-                                    <FontStyle>Italic</FontStyle>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -343,12 +305,10 @@ WHERE (
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Status:</Value>
+                                  <Value>Product No</Value>
                                   <Style>
-                                    <FontStyle>Italic</FontStyle>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -380,12 +340,10 @@ WHERE (
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Amount:</Value>
+                                  <Value>PONumber</Value>
                                   <Style>
-                                    <FontStyle>Italic</FontStyle>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -408,6 +366,111 @@ WHERE (
                         </Textbox>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox13">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>National Acct</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox13</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox15">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Vendor Name</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox15</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox17">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Item No</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox17</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
@@ -415,23 +478,23 @@ WHERE (
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="OrderID2">
+                        <Textbox Name="QuoteNo">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!OrderID.Value</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                  </Style>
+                                  <Value>=Fields!QuoteNo.Value</Value>
+                                  <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>OrderID2</rd:DefaultName>
+                          <rd:DefaultName>QuoteNo</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -447,104 +510,7 @@ WHERE (
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="QuoteDate1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!QuoteDate.Value</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                    <Format>d</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>QuoteDate1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="RepShipTo1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!RepShipTo.Value</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>RepShipTo1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="ShipName1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!ShipName.Value</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>ShipName1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="StatusOfOrder1">
+                        <Textbox Name="StatusOfOrder">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -552,84 +518,15 @@ WHERE (
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!StatusOfOrder.Value</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>StatusOfOrder1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="SELL1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!SELL.Value)</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>SELL1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                  </TablixCells>
-                </TablixRow>
-                <TablixRow>
-                  <Height>0.25in</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="OrderID">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!OrderID.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>OrderID</rd:DefaultName>
+                          <rd:DefaultName>StatusOfOrder</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -645,51 +542,23 @@ WHERE (
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="QuoteDate">
+                        <Textbox Name="ICCG_InvNo">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!QuoteDate.Value</Value>
+                                  <Value>=Fields!ICCG_InvNo.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>QuoteDate</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="RepShipTo">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!RepShipTo.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>RepShipTo</rd:DefaultName>
+                          <rd:DefaultName>ICCG_InvNo</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -737,267 +606,25 @@ WHERE (
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="StatusOfOrder">
+                        <Textbox Name="ProductNo">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!StatusOfOrder.Value</Value>
+                                  <Value>=Fields!ProductNo.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>StatusOfOrder</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="SELL">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!SELL.Value</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>SELL</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                  </TablixCells>
-                </TablixRow>
-                <TablixRow>
-                  <Height>0.25in</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox34">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox34</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox35">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox35</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox36">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox36</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox37">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Total Amount: </Value>
-                                  <Style>
-                                    <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Arial</FontFamily>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox37</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <ColSpan>2</ColSpan>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell />
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox39">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!SELL.Value)</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox39</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                  </TablixCells>
-                </TablixRow>
-                <TablixRow>
-                  <Height>0.25in</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox118">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox118</rd:DefaultName>
+                          <rd:DefaultName>ProductNo</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1013,92 +640,25 @@ WHERE (
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox119">
+                        <Textbox Name="PONumber">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!PONumber.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox119</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox120">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox120</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox41">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Grand Total: </Value>
-                                  <Style>
-                                    <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Arial</FontFamily>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>#24509c</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox37</rd:DefaultName>
+                          <rd:DefaultName>PONumber</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1110,31 +670,27 @@ WHERE (
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <ColSpan>2</ColSpan>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell />
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="SELL2">
+                        <Textbox Name="NationalAcct">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!SELL.Value)</Value>
+                                  <Value>=Fields!NationalAcct.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>SELL2</rd:DefaultName>
+                          <rd:DefaultName>NationalAcct</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1144,7 +700,72 @@ WHERE (
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
-                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="VendorName">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!VendorName.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>VendorName</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Item_No">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Item_No.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Item_No</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1161,68 +782,25 @@ WHERE (
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="RepLastName">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!RepLastName.Value</GroupExpression>
-                    </GroupExpressions>
-                    <PageBreak>
-                      <BreakLocation>Between</BreakLocation>
-                    </PageBreak>
-                  </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>=Fields!RepLastName.Value</Value>
-                    </SortExpression>
-                  </SortExpressions>
-                  <TablixMembers>
-                    <TablixMember>
-                      <KeepWithGroup>After</KeepWithGroup>
-                    </TablixMember>
-                    <TablixMember>
-                      <KeepWithGroup>After</KeepWithGroup>
-                    </TablixMember>
-                    <TablixMember>
-                      <Group Name="OrderID">
-                        <GroupExpressions>
-                          <GroupExpression>=Fields!OrderID.Value</GroupExpression>
-                        </GroupExpressions>
-                      </Group>
-                      <SortExpressions>
-                        <SortExpression>
-                          <Value>=Fields!OrderID.Value</Value>
-                        </SortExpression>
-                      </SortExpressions>
-                      <TablixMembers>
-                        <TablixMember>
-                          <KeepWithGroup>After</KeepWithGroup>
-                        </TablixMember>
-                        <TablixMember>
-                          <Group Name="Details" />
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                        </TablixMember>
-                      </TablixMembers>
-                    </TablixMember>
-                    <TablixMember>
-                      <KeepWithGroup>Before</KeepWithGroup>
-                    </TablixMember>
-                  </TablixMembers>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
                 </TablixMember>
                 <TablixMember>
-                  <KeepWithGroup>Before</KeepWithGroup>
+                  <Group Name="Details" />
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>OpenQuotes</DataSetName>
-            <Top>0.01389in</Top>
-            <Height>1.5in</Height>
-            <Width>9.6875in</Width>
+            <DataSetName>ConsulateDetails</DataSetName>
+            <Height>0.5in</Height>
+            <Width>13.13542in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1230,13 +808,13 @@ WHERE (
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>1.51389in</Height>
+        <Height>0.61458in</Height>
         <Style />
       </Body>
-      <Width>9.70486in</Width>
+      <Width>13.13542in</Width>
       <Page>
         <PageHeader>
-          <Height>1.1875in</Height>
+          <Height>1.15972in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1245,7 +823,7 @@ WHERE (
               <Value>Invacare1</Value>
               <Sizing>FitProportional</Sizing>
               <Height>1.14583in</Height>
-              <Width>2in</Width>
+              <Width>2.22917in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1259,7 +837,7 @@ WHERE (
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Open Quotes - No Lost/Cancelled</Value>
+                      <Value>Consulate Open Items</Value>
                       <Style>
                         <FontStyle>Italic</FontStyle>
                         <FontFamily>Times New Roman</FontFamily>
@@ -1275,84 +853,11 @@ WHERE (
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>0.21597in</Top>
-              <Left>2in</Left>
+              <Top>0.37847in</Top>
+              <Left>2.22917in</Left>
               <Height>0.41667in</Height>
-              <Width>7.6875in</Width>
+              <Width>10.90625in</Width>
               <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox6">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Quote Dates:</Value>
-                      <Style>
-                        <FontStyle>Italic</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>12pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <Color>#1d5196</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.76736in</Top>
-              <Left>2in</Left>
-              <Height>0.25in</Height>
-              <Width>2.6875in</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox10">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Parameters!StartQuoteDate.Value &amp; "-" &amp; Parameters!EndQuoteDate.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.76736in</Top>
-              <Left>4.6875in</Left>
-              <Height>0.25in</Height>
-              <Width>5in</Width>
-              <ZIndex>3</ZIndex>
-              <Visibility>
-                <Hidden>=(Globals!RenderFormat.Name = "EXCEL")</Hidden>
-              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1371,7 +876,7 @@ WHERE (
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>0.42708in</Height>
+          <Height>0.33333in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1394,9 +899,9 @@ WHERE (
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox24</rd:DefaultName>
-              <Top>0.02778in</Top>
+              <Top>0.04167in</Top>
               <Height>0.25in</Height>
-              <Width>2in</Width>
+              <Width>2.22917in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1424,10 +929,10 @@ WHERE (
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox25</rd:DefaultName>
-              <Top>0.05556in</Top>
-              <Left>7.6875in</Left>
+              <Top>0.04167in</Top>
+              <Left>9.91667in</Left>
               <Height>0.25in</Height>
-              <Width>2in</Width>
+              <Width>3.21875in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -1454,42 +959,10 @@ WHERE (
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParameters>
-    <ReportParameter Name="StartQuoteDate">
-      <DataType>DateTime</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>=DateAdd("m", -1, DateSerial(Year(Now()), Month(Now()), 1))</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>Start Quote Date</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="EndQuoteDate">
-      <DataType>DateTime</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>=DateAdd("s", -1, DateSerial(Year(Now()), Month(Now()), 1))</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>End Quote Date</Prompt>
-    </ReportParameter>
-  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
-      <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>StartQuoteDate</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>EndQuoteDate</ParameterName>
-        </CellDefinition>
-      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <EmbeddedImages>
@@ -1513,5 +986,5 @@ xE5q3oPayRzTNddcY1Sxt0VoW1C71A4YNMj+rJq2F12trfa7tfPOO8/cTzjhBJN+ww03mK1N0LazceNG
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>7cff1830-62d6-4bce-a3e4-96aa949aedab</rd:ReportID>
+  <rd:ReportID>105ae11f-4455-4960-bbe8-f68503e40bd1</rd:ReportID>
 </Report>
