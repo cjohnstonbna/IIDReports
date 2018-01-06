@@ -366,14 +366,14 @@ Order By ShippedBase.OrderID</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Non_Proprietary">
+                        <Textbox Name="Proprietary">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Non_Proprietary.Value</Value>
+                                  <Value>=Fields!Proprietary.Value</Value>
                                   <Style>
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                   </Style>
@@ -382,7 +382,7 @@ Order By ShippedBase.OrderID</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Non_Proprietary</rd:DefaultName>
+                          <rd:DefaultName>Proprietary</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -442,14 +442,14 @@ Order By ShippedBase.OrderID</CommandText>
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Non_Proprietary1">
+                        <Textbox Name="Proprietary1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Non_Proprietary.Value)</Value>
+                                  <Value>=Sum(Fields!Proprietary.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
@@ -459,7 +459,7 @@ Order By ShippedBase.OrderID</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Non_Proprietary1</rd:DefaultName>
+                          <rd:DefaultName>Proprietary1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -599,7 +599,7 @@ Order By ShippedBase.OrderID</CommandText>
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.77083in</Height>
+        <Height>0.78125in</Height>
         <Style />
       </Body>
       <Width>8.97916in</Width>
@@ -628,7 +628,7 @@ Order By ShippedBase.OrderID</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Buyout Totals By Represenative </Value>
+                      <Value>Proprietary Totals By Represenative </Value>
                       <Style>
                         <FontStyle>Italic</FontStyle>
                         <FontFamily>Times New Roman</FontFamily>
@@ -729,7 +729,7 @@ Order By ShippedBase.OrderID</CommandText>
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>0.32292in</Height>
+          <Height>0.3125in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -752,7 +752,7 @@ Order By ShippedBase.OrderID</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox24</rd:DefaultName>
-              <Top>0.0125in</Top>
+              <Top>0.02431in</Top>
               <Height>0.25in</Height>
               <Width>1.80208in</Width>
               <Style>
@@ -782,7 +782,7 @@ Order By ShippedBase.OrderID</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox25</rd:DefaultName>
-              <Top>0.0125in</Top>
+              <Top>0.02431in</Top>
               <Left>7.30208in</Left>
               <Height>0.25in</Height>
               <Width>1.67708in</Width>
