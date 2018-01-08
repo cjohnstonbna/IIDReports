@@ -43,7 +43,10 @@ SELECT O.PONumber
 	--,CASE WHEN MP.ProdType = 'B' OR OD.Grade = 'com' THEN (CASE WHEN OD.ydsreqd &gt; 0 THEN ISNULL(OD.YdsReqd, MP.YdsCOM) * ISNULL(OD.FabricUnitCost,0) + ISNULL(OD.UpgradeCost,0) + ISNULL(OD.Foam,0) + ISNULL(OD.Carton,0) + ISNULL(OD.Labor,0) END * ((1 - OD.Discount) * 100) / 100) ELSE (OD.UnitPrice * ((1 - OD.Discount) * 100) / 100) END AS SELL
 	,Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) as Sell
 	--,CASE WHEN MP.ProdType = 'B' OR OD.Grade = 'com' THEN (CASE WHEN OD.ydsreqd &gt; 0 THEN ISNULL(OD.YdsReqd, MP.YdsCOM) * ISNULL(OD.FabricUnitCost,0) + ISNULL(OD.UpgradeCost,0) + ISNULL(OD.Foam,0) + ISNULL(OD.Carton,0) + ISNULL(OD.Labor,0) END * ((1 - OD.Discount) * 100) / 100) ELSE (OD.UnitPrice * ((1 - OD.Discount) * 100) / 100) END * [Quantity] AS ExtPrice
-	,Cast((case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) * [Quantity] as money) AS ExtPrice
+	,Cast(case when(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end) = 0 then
+	Cast((OD.UnitCost+ ((case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])) as money) * [Quantity] else 
+	Cast(case when [ProdType]='B' Or OD.Grade='com' then ((OD.UnitCost+ (case when isnull([ydsreqd],0)&gt;0 then [ydsreqd]  else  [YdsCOM] end *[FabricUnitCost])+[UpgradeCost]+[Foam]+[Carton]+[Labor])  *((1-[Discount])*100)/100)  else  ([unitprice]*((1-[discount])*100)/100) end as money) * Quantity end as money) AS ExtPrice
+
 	,OD.TempProdNo
 	,O.Designer
 	,OD.Completed

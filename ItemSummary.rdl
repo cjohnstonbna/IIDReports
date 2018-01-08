@@ -782,7 +782,7 @@ WHERE (
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2in</Height>
+        <Height>0.60417in</Height>
         <Style />
       </Body>
       <Width>13.58333in</Width>
