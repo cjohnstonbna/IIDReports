@@ -62,6 +62,7 @@
     <Report Include="CloseRate.rdl" />
     <Report Include="ConsulateOpenItems.rdl" />
     <Report Include="ContractProposal-AllPages.rdl" />
+    <Report Include="CoverContractProposal-AllPages.rdl" />
     <Report Include="DesignerCoordinatorWorkload.rdl" />
     <Report Include="Excel.rdl" />
     <Report Include="FabricShippingReport.rdl" />
