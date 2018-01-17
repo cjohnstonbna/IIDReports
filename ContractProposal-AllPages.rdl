@@ -992,7 +992,6 @@ ORDER BY OD.Area
               <BreakLocation>End</BreakLocation>
             </PageBreak>
             <KeepTogether>true</KeepTogether>
-            <Left>0in</Left>
             <Height>10.20292in</Height>
             <Width>8.00473in</Width>
             <Style>
@@ -3521,11 +3520,6 @@ UPHOLSTERED FURNITURE)</Value>
   <ReportParameters>
     <ReportParameter Name="QuoteNo">
       <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>="19720"</Value>
-        </Values>
-      </DefaultValue>
       <Prompt>Enter Quote No:</Prompt>
     </ReportParameter>
   </ReportParameters>
