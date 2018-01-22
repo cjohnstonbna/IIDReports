@@ -55,6 +55,7 @@
     <Report Include="AvalonReport.rdl" />
     <Report Include="Barricks and Artone Resident Room Furniture.rdl" />
     <Report Include="BasicQuoteInfo.rdl" />
+    <Report Include="Budgetary.rdl" />
     <Report Include="BuyoutsWithRepExcel.rdl" />
     <Report Include="BuyoutTotalsByRep.rdl" />
     <Report Include="CarryOver.rdl" />
@@ -62,6 +63,7 @@
     <Report Include="CloseRate.rdl" />
     <Report Include="ConsulateOpenItems.rdl" />
     <Report Include="ContractProposal-AllPages.rdl" />
+    <Report Include="CreditReport.rdl" />
     <Report Include="DesignerCoordinatorWorkload.rdl" />
     <Report Include="Excel.rdl" />
     <Report Include="FabricShippingReport.rdl" />
