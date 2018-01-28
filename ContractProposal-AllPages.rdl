@@ -351,7 +351,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>=First(Fields!ShipName.Value, "ProposalAllPages")</Value>
                         <Style>
-                          <FontFamily>Times New Roman</FontFamily>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontSize>28pt</FontSize>
                         </Style>
                       </TextRun>
@@ -385,7 +385,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>=First(Fields!Content.Value, "ProposalAllPages")</Value>
                         <Style>
-                          <FontFamily>Times New Roman</FontFamily>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontSize>22pt</FontSize>
                         </Style>
                       </TextRun>
@@ -420,7 +420,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>=First(Fields!ShipCity.Value, "ProposalAllPages") &amp; ", " &amp; First(Fields!ShipState.Value, "ProposalAllPages")</Value>
                         <Style>
-                          <FontFamily>Times New Roman</FontFamily>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontSize>16pt</FontSize>
                         </Style>
                       </TextRun>
@@ -455,7 +455,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>="Proposal No: " &amp; First(Fields!QuoteNo.Value, "ProposalAllPages")</Value>
                         <Style>
-                          <FontFamily>Times New Roman</FontFamily>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontSize>28pt</FontSize>
                         </Style>
                       </TextRun>
@@ -490,7 +490,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>="Revision: " &amp; First(Fields!CurrRev.Value, "ProposalAllPages") &amp; " - " &amp;  First(Fields!RevDate.Value, "ProposalAllPages")</Value>
                         <Style>
-                          <FontFamily>Times New Roman</FontFamily>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontSize>20pt</FontSize>
                         </Style>
                       </TextRun>
@@ -525,6 +525,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>Sales Rep:</Value>
                         <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -535,10 +536,10 @@ ORDER BY OD.Area
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox34</rd:DefaultName>
-                <Top>9.17653in</Top>
+                <Top>8.83903in</Top>
                 <Left>0.15499in</Left>
                 <Height>0.25in</Height>
-                <Width>1.33333in</Width>
+                <Width>1.77083in</Width>
                 <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
@@ -559,6 +560,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>Project Designer:</Value>
                         <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -569,10 +571,10 @@ ORDER BY OD.Area
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox35</rd:DefaultName>
-                <Top>9.50639in</Top>
+                <Top>9.16889in</Top>
                 <Left>0.15499in</Left>
                 <Height>0.25in</Height>
-                <Width>1.33333in</Width>
+                <Width>1.77083in</Width>
                 <ZIndex>6</ZIndex>
                 <Style>
                   <Border>
@@ -593,6 +595,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>Project Quoted By:</Value>
                         <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -603,10 +606,10 @@ ORDER BY OD.Area
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox36</rd:DefaultName>
-                <Top>9.8175in</Top>
+                <Top>9.48in</Top>
                 <Left>0.15499in</Left>
                 <Height>0.25in</Height>
-                <Width>1.33333in</Width>
+                <Width>1.77083in</Width>
                 <ZIndex>7</ZIndex>
                 <Style>
                   <Border>
@@ -627,6 +630,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>Phone:</Value>
                         <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -637,7 +641,7 @@ ORDER BY OD.Area
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox37</rd:DefaultName>
-                <Top>9.17653in</Top>
+                <Top>8.83903in</Top>
                 <Left>4.18971in</Left>
                 <Height>0.25in</Height>
                 <Width>1.16667in</Width>
@@ -661,6 +665,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>Fax:</Value>
                         <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -671,7 +676,7 @@ ORDER BY OD.Area
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox38</rd:DefaultName>
-                <Top>9.50639in</Top>
+                <Top>9.16889in</Top>
                 <Left>4.18971in</Left>
                 <Height>0.25in</Height>
                 <Width>1.16667in</Width>
@@ -695,6 +700,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>Ship To Rep:</Value>
                         <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -705,7 +711,7 @@ ORDER BY OD.Area
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox39</rd:DefaultName>
-                <Top>9.8175in</Top>
+                <Top>9.48in</Top>
                 <Left>4.18971in</Left>
                 <Height>0.25in</Height>
                 <Width>1.16667in</Width>
@@ -728,17 +734,19 @@ ORDER BY OD.Area
                     <TextRuns>
                       <TextRun>
                         <Value>=First(Fields!RepLastName.Value, "ProposalAllPages")</Value>
-                        <Style />
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>RepLastName1</rd:DefaultName>
-                <Top>9.17653in</Top>
-                <Left>1.55776in</Left>
+                <Top>8.83903in</Top>
+                <Left>1.99526in</Left>
                 <Height>0.25in</Height>
-                <Width>2.37834in</Width>
+                <Width>2.08667in</Width>
                 <ZIndex>11</ZIndex>
                 <Style>
                   <Border>
@@ -758,17 +766,19 @@ ORDER BY OD.Area
                     <TextRuns>
                       <TextRun>
                         <Value>=First(Fields!Designer.Value, "ProposalAllPages")</Value>
-                        <Style />
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Designer1</rd:DefaultName>
-                <Top>9.50639in</Top>
-                <Left>1.55776in</Left>
+                <Top>9.16889in</Top>
+                <Left>1.99526in</Left>
                 <Height>0.25in</Height>
-                <Width>2.37834in</Width>
+                <Width>2.08667in</Width>
                 <ZIndex>12</ZIndex>
                 <Style>
                   <Border>
@@ -788,17 +798,19 @@ ORDER BY OD.Area
                     <TextRuns>
                       <TextRun>
                         <Value>=First(Fields!Quoter.Value, "ProposalAllPages")</Value>
-                        <Style />
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Quoter</rd:DefaultName>
-                <Top>9.8175in</Top>
-                <Left>1.55776in</Left>
+                <Top>9.48in</Top>
+                <Left>1.99526in</Left>
                 <Height>0.25in</Height>
-                <Width>2.37834in</Width>
+                <Width>2.08667in</Width>
                 <ZIndex>13</ZIndex>
                 <Style>
                   <Border>
@@ -818,14 +830,16 @@ ORDER BY OD.Area
                     <TextRuns>
                       <TextRun>
                         <Value>=First(Fields!RepShipTo.Value, "ProposalAllPages")</Value>
-                        <Style />
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>RepShipTo</rd:DefaultName>
-                <Top>9.8175in</Top>
+                <Top>9.48in</Top>
                 <Left>5.42582in</Left>
                 <Height>0.25in</Height>
                 <Width>2.4274in</Width>
@@ -848,14 +862,16 @@ ORDER BY OD.Area
                     <TextRuns>
                       <TextRun>
                         <Value>="(800) 347-5440"</Value>
-                        <Style />
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>SalesRepPhone1</rd:DefaultName>
-                <Top>9.17653in</Top>
+                <Top>8.83903in</Top>
                 <Left>5.42582in</Left>
                 <Height>0.25in</Height>
                 <Width>2.4274in</Width>
@@ -878,14 +894,16 @@ ORDER BY OD.Area
                     <TextRuns>
                       <TextRun>
                         <Value>="(800) 797-8402"</Value>
-                        <Style />
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>SalesRepPhone1</rd:DefaultName>
-                <Top>9.50639in</Top>
+                <Top>9.16889in</Top>
                 <Left>5.42582in</Left>
                 <Height>0.25in</Height>
                 <Width>2.4274in</Width>
@@ -909,6 +927,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>=Globals!ExecutionTime</Value>
                         <Style>
+                          <FontFamily>Rockwell</FontFamily>
                           <Format>D</Format>
                         </Style>
                       </TextRun>
@@ -961,7 +980,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>="Proposal Created For:"</Value>
                         <Style>
-                          <FontFamily>Times New Roman</FontFamily>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontSize>28pt</FontSize>
                         </Style>
                       </TextRun>
@@ -992,13 +1011,2243 @@ ORDER BY OD.Area
               <BreakLocation>End</BreakLocation>
             </PageBreak>
             <KeepTogether>true</KeepTogether>
-            <Height>10.20292in</Height>
+            <Left>0.00251in</Left>
+            <Height>9.88911in</Height>
             <Width>8.00473in</Width>
             <Style>
               <Border>
                 <Color>#24509c</Color>
                 <Style>Double</Style>
                 <Width>4pt</Width>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Rectangle Name="Rectangle2">
+            <ReportItems>
+              <Textbox Name="Textbox18">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>INVACARE INTERIOR DESIGN,</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                          <FontSize>12pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox18</rd:DefaultName>
+                <Top>0.04306in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>2.48264in</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox19">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>a division of Invacare Continuing Care, Inc.</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox18</rd:DefaultName>
+                <Top>0.07604in</Top>
+                <Left>2.66788in</Left>
+                <Height>0.25in</Height>
+                <Width>2.89361in</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox20">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>15 Worthington Access Dr.</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox18</rd:DefaultName>
+                <Top>0.35382in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>2.42708in</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox21">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Maryland Heights, Missouri 63043 USA</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox18</rd:DefaultName>
+                <Top>0.65417in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>2.54166in</Width>
+                <ZIndex>3</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox22">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Date: </Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>0.04306in</Top>
+                <Left>5.67875in</Left>
+                <Height>0.25in</Height>
+                <Width>0.58333in</Width>
+                <ZIndex>4</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox23">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=FormatDateTime(Today(),DateFormat.ShortDate)</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>0.04306in</Top>
+                <Left>6.33153in</Left>
+                <Height>0.25in</Height>
+                <Width>1.50904in</Width>
+                <ZIndex>5</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox24">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Proposal: </Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>0.35382in</Top>
+                <Left>5.18997in</Left>
+                <Height>0.25in</Height>
+                <Width>1.07211in</Width>
+                <ZIndex>6</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox25">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Deviation No: </Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>0.78055in</Top>
+                <Left>5.02066in</Left>
+                <Height>0.25in</Height>
+                <Width>1.24143in</Width>
+                <ZIndex>7</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox26">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Quoted By: </Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>1.08611in</Top>
+                <Left>5.10583in</Left>
+                <Height>0.25in</Height>
+                <Width>1.15625in</Width>
+                <ZIndex>8</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox27">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Designer: </Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>1.37778in</Top>
+                <Left>5.10583in</Left>
+                <Height>0.25in</Height>
+                <Width>1.15625in</Width>
+                <ZIndex>9</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox28">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!QuoteNo.Value, "ProposalAllPages") &amp; " Rev: " &amp; First(Fields!CurrRev.Value, "ProposalAllPages") &amp; " - " &amp; FormatDateTime(First(Fields!RevDate.Value, "ProposalAllPages"),DateFormat.ShortDate)</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>0.34861in</Top>
+                <Left>6.33153in</Left>
+                <Height>0.3625in</Height>
+                <Width>1.50904in</Width>
+                <ZIndex>10</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox29">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!DeviationNo.Value, "ProposalAllPages")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>0.78055in</Top>
+                <Left>6.33153in</Left>
+                <Height>0.25in</Height>
+                <Width>1.50904in</Width>
+                <ZIndex>11</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox30">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Quoter.Value, "ProposalAllPages")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>1.08611in</Top>
+                <Left>6.33153in</Left>
+                <Height>0.25in</Height>
+                <Width>1.50904in</Width>
+                <ZIndex>12</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Designer">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Designer.Value, "ProposalAllPages")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Designer</rd:DefaultName>
+                <Top>1.37778in</Top>
+                <Left>6.33153in</Left>
+                <Height>0.25in</Height>
+                <Width>1.50904in</Width>
+                <ZIndex>13</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox31">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Sales Rep: </Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>1.08611in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>1.15625in</Width>
+                <ZIndex>14</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox32">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Phone: </Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>1.37778in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>1.15625in</Width>
+                <ZIndex>15</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="RepLastName">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!RepLastName.Value, "ProposalAllPages")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>RepLastName</rd:DefaultName>
+                <Top>1.08611in</Top>
+                <Left>1.39705in</Left>
+                <Height>0.25in</Height>
+                <Width>1.99861in</Width>
+                <ZIndex>16</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="SalesRepPhone">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!SalesRepPhone.Value, "ProposalAllPages")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>SalesRepPhone</rd:DefaultName>
+                <Top>1.37778in</Top>
+                <Left>1.39705in</Left>
+                <Height>0.25in</Height>
+                <Width>1.99861in</Width>
+                <ZIndex>17</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox55">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>CONTRACT PROPOSAL</Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontSize>14pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox55</rd:DefaultName>
+                <Top>1.71806in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>7.66793in</Width>
+                <ZIndex>18</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox56">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value />
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox56</rd:DefaultName>
+                <Top>2.04722in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.08195in</Height>
+                <Width>7.66793in</Width>
+                <ZIndex>19</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <TopBorder>
+                    <Style>Double</Style>
+                    <Width>6pt</Width>
+                  </TopBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox33">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Sold To: </Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>2.19861in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>0.875in</Width>
+                <ZIndex>20</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox40">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Ship To: </Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox22</rd:DefaultName>
+                <Top>2.19861in</Top>
+                <Left>4.05237in</Left>
+                <Height>0.25in</Height>
+                <Width>0.92788in</Width>
+                <ZIndex>21</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Organization">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Organization.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Organization</rd:DefaultName>
+                <Top>2.19861in</Top>
+                <Left>1.11581in</Left>
+                <Height>0.25in</Height>
+                <Width>2.82153in</Width>
+                <ZIndex>22</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="ShipName1">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!ShipName.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>ShipName1</rd:DefaultName>
+                <Top>2.19861in</Top>
+                <Left>5.04969in</Left>
+                <Height>0.25in</Height>
+                <Width>2.76307in</Width>
+                <ZIndex>23</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Address">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Address.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Address</rd:DefaultName>
+                <Top>2.80139in</Top>
+                <Left>1.11581in</Left>
+                <Height>0.25in</Height>
+                <Width>2.82153in</Width>
+                <ZIndex>24</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="City">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!City.Value, "ProposalAllPages") &amp; ", " &amp; First(Fields!STATE.Value, "ProposalAllPages") &amp; " " &amp; First(Fields!Zip.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>City</rd:DefaultName>
+                <Top>3.12083in</Top>
+                <Left>1.11581in</Left>
+                <Height>0.25in</Height>
+                <Width>2.82153in</Width>
+                <ZIndex>25</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="ShipAddress">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!ShipAddress.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>ShipAddress</rd:DefaultName>
+                <Top>2.80139in</Top>
+                <Left>5.04969in</Left>
+                <Height>0.25in</Height>
+                <Width>2.77697in</Width>
+                <ZIndex>26</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="City2">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!ShipCity.Value, "ProposalAllPages") &amp; ", " &amp; First(Fields!ShipState.Value, "ProposalAllPages") &amp; " " &amp; First(Fields!ShipZip.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>City</rd:DefaultName>
+                <Top>3.12083in</Top>
+                <Left>5.04969in</Left>
+                <Height>0.25in</Height>
+                <Width>2.76307in</Width>
+                <ZIndex>27</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Contact">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Contact.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Contact</rd:DefaultName>
+                <Top>3.44028in</Top>
+                <Left>1.11581in</Left>
+                <Height>0.25in</Height>
+                <Width>2.82153in</Width>
+                <ZIndex>28</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Phone">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Phone.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Phone</rd:DefaultName>
+                <Top>3.75972in</Top>
+                <Left>1.11581in</Left>
+                <Height>0.25in</Height>
+                <Width>2.82153in</Width>
+                <ZIndex>29</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Fax">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Fax.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Fax</rd:DefaultName>
+                <Top>4.07917in</Top>
+                <Left>1.11581in</Left>
+                <Height>0.25in</Height>
+                <Width>2.82153in</Width>
+                <ZIndex>30</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Email">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Email.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Email</rd:DefaultName>
+                <Top>4.39861in</Top>
+                <Left>1.11581in</Left>
+                <Height>0.25in</Height>
+                <Width>2.82153in</Width>
+                <ZIndex>31</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox69">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Attn:</Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox69</rd:DefaultName>
+                <Top>3.44028in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>0.875in</Width>
+                <ZIndex>32</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox70">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Phone:</Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox69</rd:DefaultName>
+                <Top>3.75972in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>0.875in</Width>
+                <ZIndex>33</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox71">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Fax:</Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox69</rd:DefaultName>
+                <Top>4.07917in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>0.875in</Width>
+                <ZIndex>34</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox72">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Email:</Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox69</rd:DefaultName>
+                <Top>4.39861in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>0.875in</Width>
+                <ZIndex>35</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="AltPhone">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!AltPhone.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>AltPhone</rd:DefaultName>
+                <Top>4.07917in</Top>
+                <Left>5.04969in</Left>
+                <Height>0.25in</Height>
+                <Width>2.76307in</Width>
+                <ZIndex>36</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox73">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Alt Phone:</Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox69</rd:DefaultName>
+                <Top>4.07917in</Top>
+                <Left>4.05237in</Left>
+                <Height>0.25in</Height>
+                <Width>0.92788in</Width>
+                <ZIndex>37</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox75">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>CONTRACT PROPOSAL PRICE:</Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox75</rd:DefaultName>
+                <Top>4.72847in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>3.76598in</Width>
+                <ZIndex>38</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="ExtPrice">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Sum(Fields!ExtPrice.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <Format>'$'#,0.00;('$'#,0.00)</Format>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>ExtPrice</rd:DefaultName>
+                <Top>4.72847in</Top>
+                <Left>5.53723in</Left>
+                <Height>0.25in</Height>
+                <Width>2.31723in</Width>
+                <ZIndex>39</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox76">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>STATE AND LOCAL TAXES </Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Label>ESTIMATE</Label>
+                        <Value>="(estimate)"</Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox75</rd:DefaultName>
+                <Top>5.04792in</Top>
+                <Left>0.17137in</Left>
+                <Height>0.25in</Height>
+                <Width>3.76598in</Width>
+                <ZIndex>40</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="ExtPrice2">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Taxes.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <Format>'$'#,0.00;('$'#,0.00)</Format>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>ExtPrice</rd:DefaultName>
+                <Top>5.04792in</Top>
+                <Left>5.53723in</Left>
+                <Height>0.25in</Height>
+                <Width>2.31723in</Width>
+                <ZIndex>41</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </TopBorder>
+                  <BottomBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </RightBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox77">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>FREIGHT    Shipped Direct to Job Site</Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox75</rd:DefaultName>
+                <Top>5.36597in</Top>
+                <Left>0.17137in</Left>
+                <Height>0.25in</Height>
+                <Width>3.76598in</Width>
+                <ZIndex>42</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="ExtPrice3">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=IIf(ISNothing(First(Fields!FrtActEst.Value, "ProposalAllPages")),"To Be Added",First(Fields!Freight.Value, "ProposalAllPages"))</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <Format>'$'#,0.00;('$'#,0.00)</Format>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>ExtPrice</rd:DefaultName>
+                <Top>5.36597in</Top>
+                <Left>5.53847in</Left>
+                <Height>0.25in</Height>
+                <Width>2.31723in</Width>
+                <ZIndex>43</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox78">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>INSTALLATION                    By Owner</Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox75</rd:DefaultName>
+                <Top>5.99792in</Top>
+                <Left>0.17137in</Left>
+                <Height>0.25in</Height>
+                <Width>3.76598in</Width>
+                <ZIndex>44</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Content1">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Content.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Content1</rd:DefaultName>
+                <Top>2.50602in</Top>
+                <Left>5.18997in</Left>
+                <Height>0.25in</Height>
+                <Width>2.6228in</Width>
+                <ZIndex>45</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox79">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>CONTRACT TOTAL: </Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox75</rd:DefaultName>
+                <Top>6.59757in</Top>
+                <Left>0.17137in</Left>
+                <Height>0.25in</Height>
+                <Width>3.76598in</Width>
+                <ZIndex>46</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="ExtPrice5">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Sum(Fields!ExtPrice.Value, "ProposalAllPages")+IIf(IsNothing(First(Fields!FrtActEst.Value, "ProposalAllPages")),0,First(Fields!Freight.Value, "ProposalAllPages"))+First(Fields!Installation.Value, "ProposalAllPages") + IIf(IsNothing(First(Fields!Taxes.Value, "ProposalAllPages")),0,First(Fields!Taxes.Value, "ProposalAllPages"))+First(Fields!LineFee.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <Format>'$'#,0.00;('$'#,0.00)</Format>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>ExtPrice</rd:DefaultName>
+                <Top>6.59757in</Top>
+                <Left>5.53847in</Left>
+                <Height>0.25in</Height>
+                <Width>2.31723in</Width>
+                <ZIndex>47</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                </Style>
+              </Textbox>
+              <Textbox Name="Installation">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Sum(Fields!Installation.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <Format>'$'#,0.00;('$'#,0.00)</Format>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Installation</rd:DefaultName>
+                <Top>5.99792in</Top>
+                <Left>5.53847in</Left>
+                <Height>0.25in</Height>
+                <Width>2.31723in</Width>
+                <ZIndex>48</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox89">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="FOR APPROXIMATE LEAD TIME, REFER TO TERMS AND CONDITIONS."</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                          <FontSize>12pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox89</rd:DefaultName>
+                <Top>6.90972in</Top>
+                <Left>0.17137in</Left>
+                <Height>0.25in</Height>
+                <Width>7.68309in</Width>
+                <ZIndex>49</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <BackgroundColor>LightGrey</BackgroundColor>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox90">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="PLEASE SIGN PROPOSAL TO AUTHORIZE INVACARE TO PROCEED WITH ORDER.  IF BILLING AND SHIPPING INFORMATION ARE DIFFERENT THAN ABOVE, PLEASE MAKE NOTATION."</Value>
+                        <Style>
+                          <FontStyle>Italic</FontStyle>
+                          <FontFamily>Rockwell</FontFamily>
+                          <FontSize>12pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox90</rd:DefaultName>
+                <Top>7.22014in</Top>
+                <Left>0.17137in</Left>
+                <Height>0.4375in</Height>
+                <Width>7.68309in</Width>
+                <ZIndex>50</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <BackgroundColor>LightGrey</BackgroundColor>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox91">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>COMPANY NAME</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox91</rd:DefaultName>
+                <Top>7.99931in</Top>
+                <Left>0.17261in</Left>
+                <Height>0.25in</Height>
+                <Width>3.22305in</Width>
+                <ZIndex>51</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </TopBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox92">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>AUTHORIZED SIGNATURE</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox91</rd:DefaultName>
+                <Top>7.99931in</Top>
+                <Left>4.83581in</Left>
+                <Height>0.25in</Height>
+                <Width>2.99086in</Width>
+                <ZIndex>52</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </TopBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox93">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>PO NUMBER</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox91</rd:DefaultName>
+                <Top>8.6375in</Top>
+                <Left>0.17261in</Left>
+                <Height>0.25in</Height>
+                <Width>3.22305in</Width>
+                <ZIndex>53</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </TopBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox94">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>TITLE                                            DATE</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox91</rd:DefaultName>
+                <Top>8.6375in</Top>
+                <Left>4.83581in</Left>
+                <Height>0.25in</Height>
+                <Width>2.99086in</Width>
+                <ZIndex>54</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </TopBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox95">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>REQUESTED DELIVERY DATE</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox91</rd:DefaultName>
+                <Top>9.21528in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>3.22305in</Width>
+                <ZIndex>55</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </TopBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox96">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>*IF TAX EXEMPT CLAIMED, CERT NO.</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox91</rd:DefaultName>
+                <Top>9.21528in</Top>
+                <Left>4.83581in</Left>
+                <Height>0.25in</Height>
+                <Width>2.99086in</Width>
+                <ZIndex>56</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </TopBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox98">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>(MINIMUM 10-12 WEEKS FOR
+UPHOLSTERED FURNITURE)</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                          <Color>Red</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox98</rd:DefaultName>
+                <Top>9.50972in</Top>
+                <Left>0.17261in</Left>
+                <Height>0.38542in</Height>
+                <Width>3.2218in</Width>
+                <ZIndex>57</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox99">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Fax Signed Copy to:  1-800-797-8402</Value>
+                        <Style>
+                          <FontStyle>Italic</FontStyle>
+                          <FontFamily>Rockwell</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>Red</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox99</rd:DefaultName>
+                <Top>10.01042in</Top>
+                <Left>0.17136in</Left>
+                <Height>0.25in</Height>
+                <Width>3.2218in</Width>
+                <ZIndex>58</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <BackgroundColor>LightGrey</BackgroundColor>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="AltPhone2">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!ShipPhone.Value, "ProposalAllPages")</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>AltPhone</rd:DefaultName>
+                <Top>3.75972in</Top>
+                <Left>5.04969in</Left>
+                <Height>0.25in</Height>
+                <Width>2.76307in</Width>
+                <ZIndex>59</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Rectangle Name="Rectangle11">
+                <ReportItems>
+                  <Image Name="Image4">
+                    <Source>Embedded</Source>
+                    <Value>Invacare</Value>
+                    <Sizing>FitProportional</Sizing>
+                    <Height>0.7507in</Height>
+                    <Width>1.08678in</Width>
+                    <Style>
+                      <Border>
+                        <Style>None</Style>
+                      </Border>
+                    </Style>
+                  </Image>
+                </ReportItems>
+                <KeepTogether>true</KeepTogether>
+                <Top>9.50972in</Top>
+                <Left>5.67875in</Left>
+                <Height>0.76923in</Height>
+                <Width>1.08678in</Width>
+                <ZIndex>60</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Rectangle>
+              <Textbox Name="Textbox74">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Ship Phone:</Value>
+                        <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox69</rd:DefaultName>
+                <Top>3.75972in</Top>
+                <Left>4.05237in</Left>
+                <Height>0.25in</Height>
+                <Width>0.92788in</Width>
+                <ZIndex>61</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox1">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="NOTES: " &amp; Parameters!FreightNotes.Value</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox1</rd:DefaultName>
+                <Top>5.68464in</Top>
+                <Left>0.17137in</Left>
+                <Height>0.25633in</Height>
+                <Width>7.68309in</Width>
+                <ZIndex>62</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox2">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="NOTES: " &amp; Parameters!InstallNotes.Value</Value>
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox1</rd:DefaultName>
+                <Top>6.30348in</Top>
+                <Left>0.17137in</Left>
+                <Height>0.23854in</Height>
+                <Width>7.68309in</Width>
+                <ZIndex>63</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <PageBreak>
+              <BreakLocation>End</BreakLocation>
+            </PageBreak>
+            <KeepTogether>true</KeepTogether>
+            <Top>9.94466in</Top>
+            <Height>10.27895in</Height>
+            <Width>8.02109in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
               </Border>
             </Style>
           </Rectangle>
@@ -1013,6 +3262,7 @@ ORDER BY OD.Area
                       <TextRun>
                         <Value>TERMS and CONDITIONS</Value>
                         <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontSize>14pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
@@ -1082,7 +3332,9 @@ ORDER BY OD.Area
                         <Value>Signing of this proposal authorizes Invacare to proceed with ordering processing.
 
 All subsequent changes will be made with the use of a Change Order that should be signed by Purchaser.</Value>
-                        <Style />
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
@@ -1112,7 +3364,9 @@ All subsequent changes will be made with the use of a Change Order that should b
                     <TextRuns>
                       <TextRun>
                         <Value>="Please allow approximately **" &amp; First(Fields!DeliveryWeeks.Value, "ProposalAllPages") &amp; "** weeks for delivery after receipt of order, depending on product selections."</Value>
-                        <Style />
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
@@ -1148,7 +3402,9 @@ Prices are firm for orders received by September 30, 2017.  Individual prices ar
 The Purchaser is responsible for notifying the Seller, in writing, of any changes in completion date at least thirty (30) days prior to completion of the project if delivery dates are to be adjusted.
 
 Prices do not include freight or installation, except where noted otherwise.  Prices on this quote are F.O.B. Factory.  Actual freight charges wil be prepaid by ICC and added to the invoice.  Freight charges may include charges for storing the Purchaser's items.  If delivery of the Purchaser's items is delayed by greater than thirty (30) days, ICC reserves the right to invoice Purchaser for additional storage charges.</Value>
-                        <Style />
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
@@ -1178,7 +3434,9 @@ Prices do not include freight or installation, except where noted otherwise.  Pr
                     <TextRuns>
                       <TextRun>
                         <Value>Purchaser has seven (7) days from delivery of the Purchaser's items to inspect the items and notfiy ICC of any issues regarding delivered items.  If Purchaser does not notify ICC of any issues within seven (7) days of delivery, the Purchaser has accepted the items as-is.  ICC goods ordered by the Purchaser are made to order and are not returnable.</Value>
-                        <Style />
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
@@ -1215,7 +3473,9 @@ Payment terms are Net thirty (30) days.
 
 **Note:  Alternates and options may reflect zero quantities and will not be reflected in total price.
 Financing options are also available through Invacare Credit Corporation to those who qualify, with all orders still subject to Financial Services credit approval.  Certain qualifications apply for all financing options, including a minimum order size of $5,000.00 and the filing of UCC-1 lien statement(s) for any leased property.   Please contact your sales associate for further information.</Value>
-                        <Style />
+                        <Style>
+                          <FontFamily>Rockwell</FontFamily>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
@@ -1246,6 +3506,7 @@ Financing options are also available through Invacare Credit Corporation to thos
                       <TextRun>
                         <Value>=First(Fields!ShipName.Value, "ProposalAllPages") &amp; " - " &amp; First(Fields!Content.Value, "ProposalAllPages")</Value>
                         <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontSize>16pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
@@ -1279,6 +3540,7 @@ Financing options are also available through Invacare Credit Corporation to thos
                       <TextRun>
                         <Value>="Proposal: " &amp; First(Fields!QuoteNo.Value, "ProposalAllPages")</Value>
                         <Style>
+                          <FontFamily>Rockwell Extra Bold</FontFamily>
                           <FontSize>12pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
@@ -1309,7 +3571,7 @@ Financing options are also available through Invacare Credit Corporation to thos
                 <Source>Embedded</Source>
                 <Value>Invacare</Value>
                 <Sizing>FitProportional</Sizing>
-                <Top>4.53142in</Top>
+                <Top>6.81852in</Top>
                 <Left>5.66364in</Left>
                 <Height>0.7507in</Height>
                 <Width>1.08678in</Width>
@@ -1322,2102 +3584,10 @@ Financing options are also available through Invacare Credit Corporation to thos
               </Image>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>20.52674in</Top>
-            <Left>0.01263in</Left>
-            <Height>5.34479in</Height>
+            <Top>20.25139in</Top>
+            <Left>0.01511in</Left>
+            <Height>7.73102in</Height>
             <Width>7.97569in</Width>
-            <ZIndex>1</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Rectangle>
-          <Rectangle Name="Rectangle2">
-            <ReportItems>
-              <Textbox Name="Textbox18">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>INVACARE INTERIOR DESIGN,</Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox18</rd:DefaultName>
-                <Top>0.04306in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>2.24999in</Width>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox19">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>a division of Invacare Continuing Care, Inc.</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox18</rd:DefaultName>
-                <Top>0.07604in</Top>
-                <Left>2.40499in</Left>
-                <Height>0.25in</Height>
-                <Width>2.76041in</Width>
-                <ZIndex>1</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox20">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>15 Worthington Access Dr.</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox18</rd:DefaultName>
-                <Top>0.35382in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>2.42708in</Width>
-                <ZIndex>2</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox21">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Maryland Heights, Missouri 63043 USA</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox18</rd:DefaultName>
-                <Top>0.65417in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>2.54166in</Width>
-                <ZIndex>3</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox22">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Date: </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>0.04306in</Top>
-                <Left>5.66239in</Left>
-                <Height>0.25in</Height>
-                <Width>0.58333in</Width>
-                <ZIndex>4</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox23">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=FormatDateTime(Today(),DateFormat.ShortDate)</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Left</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>0.05694in</Top>
-                <Left>6.31517in</Left>
-                <Height>0.25in</Height>
-                <Width>1.50904in</Width>
-                <ZIndex>5</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox24">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Proposal: </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>0.35382in</Top>
-                <Left>5.43323in</Left>
-                <Height>0.25in</Height>
-                <Width>0.8125in</Width>
-                <ZIndex>6</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox25">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Deviation No: </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>0.64375in</Top>
-                <Left>5.08948in</Left>
-                <Height>0.25in</Height>
-                <Width>1.15625in</Width>
-                <ZIndex>7</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox26">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Quoted By: </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>1.07222in</Top>
-                <Left>5.08947in</Left>
-                <Height>0.25in</Height>
-                <Width>1.15625in</Width>
-                <ZIndex>8</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox27">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Designer: </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>1.37778in</Top>
-                <Left>5.08947in</Left>
-                <Height>0.25in</Height>
-                <Width>1.15625in</Width>
-                <ZIndex>9</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox28">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!QuoteNo.Value, "ProposalAllPages") &amp; " Rev: " &amp; First(Fields!CurrRev.Value, "ProposalAllPages") &amp; " - " &amp; FormatDateTime(First(Fields!RevDate.Value, "ProposalAllPages"),DateFormat.ShortDate)</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Left</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>0.34861in</Top>
-                <Left>6.31517in</Left>
-                <Height>0.25in</Height>
-                <Width>1.50904in</Width>
-                <ZIndex>10</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox29">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!DeviationNo.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Left</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>0.65417in</Top>
-                <Left>6.31517in</Left>
-                <Height>0.25in</Height>
-                <Width>1.50904in</Width>
-                <ZIndex>11</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox30">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Quoter.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Left</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>1.08611in</Top>
-                <Left>6.31517in</Left>
-                <Height>0.25in</Height>
-                <Width>1.50904in</Width>
-                <ZIndex>12</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Designer">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Designer.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Designer</rd:DefaultName>
-                <Top>1.37778in</Top>
-                <Left>6.31517in</Left>
-                <Height>0.25in</Height>
-                <Width>1.50904in</Width>
-                <ZIndex>13</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox31">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Sales Rep: </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>1.08611in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>1.15625in</Width>
-                <ZIndex>14</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox32">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Phone: </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>1.37778in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>1.15625in</Width>
-                <ZIndex>15</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="RepLastName">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!RepLastName.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>RepLastName</rd:DefaultName>
-                <Top>1.07222in</Top>
-                <Left>1.38069in</Left>
-                <Height>0.25in</Height>
-                <Width>1.99861in</Width>
-                <ZIndex>16</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="SalesRepPhone">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!SalesRepPhone.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>SalesRepPhone</rd:DefaultName>
-                <Top>1.39167in</Top>
-                <Left>1.38069in</Left>
-                <Height>0.25in</Height>
-                <Width>1.99861in</Width>
-                <ZIndex>17</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox55">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>CONTRACT PROPOSAL</Value>
-                        <Style>
-                          <FontSize>14pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox55</rd:DefaultName>
-                <Top>1.84306in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>7.66793in</Width>
-                <ZIndex>18</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox56">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value />
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox56</rd:DefaultName>
-                <Top>2.17222in</Top>
-                <Left>0.155in</Left>
-                <Height>0.125in</Height>
-                <Width>7.66793in</Width>
-                <ZIndex>19</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <TopBorder>
-                    <Style>Double</Style>
-                    <Width>6pt</Width>
-                  </TopBorder>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox33">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Sold To: </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>2.32361in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>0.875in</Width>
-                <ZIndex>20</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox40">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Ship To: </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox22</rd:DefaultName>
-                <Top>2.32361in</Top>
-                <Left>4.03601in</Left>
-                <Height>0.25in</Height>
-                <Width>0.92788in</Width>
-                <ZIndex>21</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Organization">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Organization.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Organization</rd:DefaultName>
-                <Top>2.32361in</Top>
-                <Left>1.09945in</Left>
-                <Height>0.25in</Height>
-                <Width>2.82153in</Width>
-                <ZIndex>22</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="ShipName1">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!ShipName.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>ShipName1</rd:DefaultName>
-                <Top>2.32361in</Top>
-                <Left>5.03333in</Left>
-                <Height>0.25in</Height>
-                <Width>2.76307in</Width>
-                <ZIndex>23</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Address">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Address.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Address</rd:DefaultName>
-                <Top>2.92639in</Top>
-                <Left>1.09945in</Left>
-                <Height>0.25in</Height>
-                <Width>2.82153in</Width>
-                <ZIndex>24</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="City">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!City.Value, "ProposalAllPages") &amp; ", " &amp; First(Fields!STATE.Value, "ProposalAllPages") &amp; " " &amp; First(Fields!Zip.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>City</rd:DefaultName>
-                <Top>3.24583in</Top>
-                <Left>1.09945in</Left>
-                <Height>0.25in</Height>
-                <Width>2.82153in</Width>
-                <ZIndex>25</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="ShipAddress">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!ShipAddress.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>ShipAddress</rd:DefaultName>
-                <Top>2.92639in</Top>
-                <Left>5.03333in</Left>
-                <Height>0.25in</Height>
-                <Width>2.77697in</Width>
-                <ZIndex>26</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="City2">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!ShipCity.Value, "ProposalAllPages") &amp; ", " &amp; First(Fields!ShipState.Value, "ProposalAllPages") &amp; " " &amp; First(Fields!ShipZip.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>City</rd:DefaultName>
-                <Top>3.24583in</Top>
-                <Left>5.03333in</Left>
-                <Height>0.25in</Height>
-                <Width>2.76307in</Width>
-                <ZIndex>27</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Contact">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Contact.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Contact</rd:DefaultName>
-                <Top>3.56528in</Top>
-                <Left>1.09945in</Left>
-                <Height>0.25in</Height>
-                <Width>2.82153in</Width>
-                <ZIndex>28</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Phone">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Phone.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Phone</rd:DefaultName>
-                <Top>3.88472in</Top>
-                <Left>1.09945in</Left>
-                <Height>0.25in</Height>
-                <Width>2.82153in</Width>
-                <ZIndex>29</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Fax">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Fax.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Fax</rd:DefaultName>
-                <Top>4.20417in</Top>
-                <Left>1.09945in</Left>
-                <Height>0.25in</Height>
-                <Width>2.82153in</Width>
-                <ZIndex>30</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Email">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Email.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Email</rd:DefaultName>
-                <Top>4.52361in</Top>
-                <Left>1.09945in</Left>
-                <Height>0.25in</Height>
-                <Width>2.82153in</Width>
-                <ZIndex>31</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox69">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Attn:</Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox69</rd:DefaultName>
-                <Top>3.56528in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>0.875in</Width>
-                <ZIndex>32</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox70">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Phone:</Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox69</rd:DefaultName>
-                <Top>3.88472in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>0.875in</Width>
-                <ZIndex>33</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox71">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Fax:</Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox69</rd:DefaultName>
-                <Top>4.20417in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>0.875in</Width>
-                <ZIndex>34</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox72">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Email:</Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox69</rd:DefaultName>
-                <Top>4.52361in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>0.875in</Width>
-                <ZIndex>35</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="AltPhone">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!AltPhone.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>AltPhone</rd:DefaultName>
-                <Top>4.20417in</Top>
-                <Left>5.03333in</Left>
-                <Height>0.25in</Height>
-                <Width>2.76307in</Width>
-                <ZIndex>36</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox73">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Alt Phone:</Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox69</rd:DefaultName>
-                <Top>4.20417in</Top>
-                <Left>4.03601in</Left>
-                <Height>0.25in</Height>
-                <Width>0.92788in</Width>
-                <ZIndex>37</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox75">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>CONTRACT PROPOSAL PRICE:</Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox75</rd:DefaultName>
-                <Top>4.91597in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>3.76598in</Width>
-                <ZIndex>38</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="ExtPrice">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=Sum(Fields!ExtPrice.Value, "ProposalAllPages")</Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                          <Format>'$'#,0.00;('$'#,0.00)</Format>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>ExtPrice</rd:DefaultName>
-                <Top>4.91597in</Top>
-                <Left>5.52087in</Left>
-                <Height>0.25in</Height>
-                <Width>2.31723in</Width>
-                <ZIndex>39</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>Solid</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox76">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>STATE AND LOCAL TAXES </Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                      <TextRun>
-                        <Label>ESTIMATE</Label>
-                        <Value>="(estimate)"</Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox75</rd:DefaultName>
-                <Top>5.24792in</Top>
-                <Left>0.15501in</Left>
-                <Height>0.25in</Height>
-                <Width>3.76598in</Width>
-                <ZIndex>40</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="ExtPrice2">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Taxes.Value, "ProposalAllPages")</Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                          <Format>'$'#,0.00;('$'#,0.00)</Format>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>ExtPrice</rd:DefaultName>
-                <Top>5.24792in</Top>
-                <Left>5.52087in</Left>
-                <Height>0.25in</Height>
-                <Width>2.31723in</Width>
-                <ZIndex>41</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>Solid</Style>
-                  </Border>
-                  <TopBorder>
-                    <Color>Black</Color>
-                    <Style>Solid</Style>
-                    <Width>1pt</Width>
-                  </TopBorder>
-                  <BottomBorder>
-                    <Color>Black</Color>
-                    <Style>Solid</Style>
-                    <Width>1pt</Width>
-                  </BottomBorder>
-                  <LeftBorder>
-                    <Color>Black</Color>
-                    <Style>Solid</Style>
-                    <Width>1pt</Width>
-                  </LeftBorder>
-                  <RightBorder>
-                    <Color>Black</Color>
-                    <Style>Solid</Style>
-                    <Width>1pt</Width>
-                  </RightBorder>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox77">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>FREIGHT    Shipped Direct to Job Site</Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox75</rd:DefaultName>
-                <Top>5.55347in</Top>
-                <Left>0.15625in</Left>
-                <Height>0.25in</Height>
-                <Width>3.76598in</Width>
-                <ZIndex>42</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="ExtPrice3">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=IIf(ISNothing(First(Fields!FrtActEst.Value, "ProposalAllPages")),"To Be Added",First(Fields!Freight.Value, "ProposalAllPages"))</Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                          <Format>'$'#,0.00;('$'#,0.00)</Format>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>ExtPrice</rd:DefaultName>
-                <Top>5.52569in</Top>
-                <Left>5.52211in</Left>
-                <Height>0.25in</Height>
-                <Width>2.31723in</Width>
-                <ZIndex>43</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>Solid</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox78">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>INSTALLATION                    By Owner</Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox75</rd:DefaultName>
-                <Top>5.87292in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>3.76598in</Width>
-                <ZIndex>44</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Content1">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Content.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Content1</rd:DefaultName>
-                <Top>2.63102in</Top>
-                <Left>5.17361in</Left>
-                <Height>0.25in</Height>
-                <Width>2.6228in</Width>
-                <ZIndex>45</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox79">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>CONTRACT TOTAL: </Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox75</rd:DefaultName>
-                <Top>6.37257in</Top>
-                <Left>0.15625in</Left>
-                <Height>0.25in</Height>
-                <Width>3.76598in</Width>
-                <ZIndex>46</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="ExtPrice5">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=Sum(Fields!ExtPrice.Value, "ProposalAllPages")+IIf(IsNothing(First(Fields!FrtActEst.Value, "ProposalAllPages")),0,First(Fields!Freight.Value, "ProposalAllPages"))+First(Fields!Installation.Value, "ProposalAllPages") + IIf(IsNothing(First(Fields!Taxes.Value, "ProposalAllPages")),0,First(Fields!Taxes.Value, "ProposalAllPages"))+First(Fields!LineFee.Value, "ProposalAllPages")</Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                          <Format>'$'#,0.00;('$'#,0.00)</Format>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>ExtPrice</rd:DefaultName>
-                <Top>6.37257in</Top>
-                <Left>5.50697in</Left>
-                <Height>0.25in</Height>
-                <Width>2.31723in</Width>
-                <ZIndex>47</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>Solid</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                </Style>
-              </Textbox>
-              <Textbox Name="Installation">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=Sum(Fields!Installation.Value, "ProposalAllPages")</Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                          <Format>'$'#,0.00;('$'#,0.00)</Format>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Installation</rd:DefaultName>
-                <Top>5.87292in</Top>
-                <Left>5.52211in</Left>
-                <Height>0.25in</Height>
-                <Width>2.30209in</Width>
-                <ZIndex>48</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>Solid</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox89">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>="FOR APPROXIMATE LEAD TIME, REFER TO TERMS AND CONDITIONS."</Value>
-                        <Style>
-                          <FontSize>12pt</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox89</rd:DefaultName>
-                <Top>6.72222in</Top>
-                <Left>0.15625in</Left>
-                <Height>0.25in</Height>
-                <Width>7.66668in</Width>
-                <ZIndex>49</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <BackgroundColor>LightGrey</BackgroundColor>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox90">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>="PLEASE SIGN PROPOSAL TO AUTHORIZE INVACARE TO PROCEED WITH ORDER.  IF BILLING AND SHIPPING INFORMATION ARE DIFFERENT THAN ABOVE, PLEASE MAKE NOTATION."</Value>
-                        <Style>
-                          <FontStyle>Italic</FontStyle>
-                          <FontSize>12pt</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox90</rd:DefaultName>
-                <Top>7.05764in</Top>
-                <Left>0.14111in</Left>
-                <Height>0.4375in</Height>
-                <Width>7.69697in</Width>
-                <ZIndex>50</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <BackgroundColor>LightGrey</BackgroundColor>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox91">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>COMPANY NAME</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox91</rd:DefaultName>
-                <Top>7.87431in</Top>
-                <Left>0.15625in</Left>
-                <Height>0.25in</Height>
-                <Width>3.22305in</Width>
-                <ZIndex>51</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <TopBorder>
-                    <Color>Black</Color>
-                    <Style>Solid</Style>
-                    <Width>1pt</Width>
-                  </TopBorder>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox92">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>AUTHORIZED SIGNATURE</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox91</rd:DefaultName>
-                <Top>7.87431in</Top>
-                <Left>4.81945in</Left>
-                <Height>0.25in</Height>
-                <Width>2.99086in</Width>
-                <ZIndex>52</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <TopBorder>
-                    <Color>Black</Color>
-                    <Style>Solid</Style>
-                    <Width>1pt</Width>
-                  </TopBorder>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox93">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>PO NUMBER</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox91</rd:DefaultName>
-                <Top>8.55in</Top>
-                <Left>0.15625in</Left>
-                <Height>0.25in</Height>
-                <Width>3.22305in</Width>
-                <ZIndex>53</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <TopBorder>
-                    <Color>Black</Color>
-                    <Style>Solid</Style>
-                    <Width>1pt</Width>
-                  </TopBorder>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox94">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>TITLE                                            DATE</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox91</rd:DefaultName>
-                <Top>8.55in</Top>
-                <Left>4.81945in</Left>
-                <Height>0.25in</Height>
-                <Width>2.99086in</Width>
-                <ZIndex>54</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <TopBorder>
-                    <Color>Black</Color>
-                    <Style>Solid</Style>
-                    <Width>1pt</Width>
-                  </TopBorder>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox95">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>REQUESTED DELIVERY DATE</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox91</rd:DefaultName>
-                <Top>9.21528in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>3.22305in</Width>
-                <ZIndex>55</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <TopBorder>
-                    <Color>Black</Color>
-                    <Style>Solid</Style>
-                    <Width>1pt</Width>
-                  </TopBorder>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox96">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>*IF TAX EXEMPT CLAIMED, CERT NO.</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox91</rd:DefaultName>
-                <Top>9.21528in</Top>
-                <Left>4.81945in</Left>
-                <Height>0.25in</Height>
-                <Width>2.99086in</Width>
-                <ZIndex>56</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <TopBorder>
-                    <Color>Black</Color>
-                    <Style>Solid</Style>
-                    <Width>1pt</Width>
-                  </TopBorder>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox98">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>(MINIMUM 10-12 WEEKS FOR
-UPHOLSTERED FURNITURE)</Value>
-                        <Style>
-                          <Color>Red</Color>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox98</rd:DefaultName>
-                <Top>9.50972in</Top>
-                <Left>0.15625in</Left>
-                <Height>0.38542in</Height>
-                <Width>3.2218in</Width>
-                <ZIndex>57</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox99">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Fax Signed Copy to:  1-800-797-8402</Value>
-                        <Style>
-                          <FontStyle>Italic</FontStyle>
-                          <FontWeight>Bold</FontWeight>
-                          <Color>Red</Color>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox99</rd:DefaultName>
-                <Top>10.01042in</Top>
-                <Left>0.155in</Left>
-                <Height>0.25in</Height>
-                <Width>3.2218in</Width>
-                <ZIndex>58</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <BackgroundColor>LightGrey</BackgroundColor>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="AltPhone2">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!ShipPhone.Value, "ProposalAllPages")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>AltPhone</rd:DefaultName>
-                <Top>3.88472in</Top>
-                <Left>5.03333in</Left>
-                <Height>0.25in</Height>
-                <Width>2.76307in</Width>
-                <ZIndex>59</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Rectangle Name="Rectangle11">
-                <ReportItems>
-                  <Image Name="Image4">
-                    <Source>Embedded</Source>
-                    <Value>Invacare</Value>
-                    <Sizing>FitProportional</Sizing>
-                    <Height>0.7507in</Height>
-                    <Width>1.08678in</Width>
-                    <Style>
-                      <Border>
-                        <Style>None</Style>
-                      </Border>
-                    </Style>
-                  </Image>
-                </ReportItems>
-                <KeepTogether>true</KeepTogether>
-                <Top>9.50972in</Top>
-                <Left>5.66239in</Left>
-                <Height>0.76923in</Height>
-                <Width>1.08678in</Width>
-                <ZIndex>60</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                </Style>
-              </Rectangle>
-              <Textbox Name="Textbox74">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Ship Phone:</Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Right</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox69</rd:DefaultName>
-                <Top>3.88472in</Top>
-                <Left>4.03601in</Left>
-                <Height>0.25in</Height>
-                <Width>0.92788in</Width>
-                <ZIndex>61</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-            </ReportItems>
-            <PageBreak>
-              <BreakLocation>End</BreakLocation>
-            </PageBreak>
-            <KeepTogether>true</KeepTogether>
-            <Top>10.18855in</Top>
-            <Left>0.01388in</Left>
-            <Height>10.33819in</Height>
-            <Width>8.00473in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -3426,13 +3596,13 @@ UPHOLSTERED FURNITURE)</Value>
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>25.8993in</Height>
+        <Height>28.03242in</Height>
         <Style />
       </Body>
-      <Width>8.01861in</Width>
+      <Width>8.02112in</Width>
       <Page>
         <PageFooter>
-          <Height>0.3125in</Height>
+          <Height>0.29027in</Height>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
             <Textbox Name="Textbox42">
@@ -3443,7 +3613,9 @@ UPHOLSTERED FURNITURE)</Value>
                   <TextRuns>
                     <TextRun>
                       <Value>="Page " &amp; Globals!PageNumber &amp; " of " &amp; Globals!TotalPages</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Rockwell</FontFamily>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -3453,7 +3625,7 @@ UPHOLSTERED FURNITURE)</Value>
               </Paragraphs>
               <rd:DefaultName>Textbox25</rd:DefaultName>
               <Top>0.01944in</Top>
-              <Left>5.53472in</Left>
+              <Left>5.53723in</Left>
               <Height>0.25in</Height>
               <Width>2.30209in</Width>
               <Style>
@@ -3474,7 +3646,9 @@ UPHOLSTERED FURNITURE)</Value>
                   <TextRuns>
                     <TextRun>
                       <Value>=FormatDateTime(Today(),DateFormat.ShortDate)</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Rockwell</FontFamily>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -3484,7 +3658,7 @@ UPHOLSTERED FURNITURE)</Value>
               </Paragraphs>
               <rd:DefaultName>Textbox22</rd:DefaultName>
               <Top>0.01944in</Top>
-              <Left>0.15625in</Left>
+              <Left>0.15876in</Left>
               <Height>0.25in</Height>
               <Width>3.2382in</Width>
               <ZIndex>1</ZIndex>
@@ -3522,6 +3696,16 @@ UPHOLSTERED FURNITURE)</Value>
       <DataType>String</DataType>
       <Prompt>Enter Quote No:</Prompt>
     </ReportParameter>
+    <ReportParameter Name="FreightNotes">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Freight Notes:</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="InstallNotes">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Installation Notes:</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -3532,6 +3716,16 @@ UPHOLSTERED FURNITURE)</Value>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>QuoteNo</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>FreightNotes</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>InstallNotes</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

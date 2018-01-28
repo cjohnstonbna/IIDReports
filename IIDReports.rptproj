@@ -88,6 +88,7 @@
     <Report Include="OpenQuotes_NoLost_Cancelled.rdl" />
     <Report Include="POsMissingEstimatedInvoiceInfo.rdl" />
     <Report Include="ProprietaryTotalsByRep.rdl" />
+    <Report Include="PurchaseOrder.rdl" />
     <Report Include="PurchaseOrderByProjectCoordinator.rdl" />
     <Report Include="Quote Detail By Coordinator.rdl" />
     <Report Include="Quote Detail By Designer.rdl" />
