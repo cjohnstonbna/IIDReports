@@ -2220,6 +2220,11 @@ ORDER BY O.ProjCoor;</CommandText>
                     </TablixMember>
                     <TablixMember>
                       <Group Name="Details" />
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!ProdNo.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
                       <TablixMembers>
                         <TablixMember />
                         <TablixMember />
@@ -2430,7 +2435,7 @@ IIF(ISNothing(Fields!Color.Value),True,False))</Hidden>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox25</rd:DefaultName>
-              <Top>0.77083in</Top>
+              <Top>0.79861in</Top>
               <Left>6.15626in</Left>
               <Height>0.25in</Height>
               <Width>2.35416in</Width>

@@ -65,11 +65,14 @@
     <Report Include="ContractProposal-AllPages.rdl" />
     <Report Include="CreditReport.rdl" />
     <Report Include="CustomerOrderUpdateReq.rdl" />
+    <Report Include="CustomerOrderUpdateReq_ByPO.rdl" />
     <Report Include="CustOrderPO.rdl" />
     <Report Include="DesignerCoordinatorWorkload.rdl" />
     <Report Include="Excel.rdl" />
     <Report Include="FabricShippingReport.rdl" />
     <Report Include="Facilities By State.rdl" />
+    <Report Include="FireCertificationCust.rdl" />
+    <Report Include="FireCertificationFax.rdl" />
     <Report Include="FlooringMargins.rdl" />
     <Report Include="HolsagContest.rdl" />
     <Report Include="InstallMargins.rdl" />
