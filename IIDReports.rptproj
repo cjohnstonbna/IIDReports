@@ -52,7 +52,9 @@
   <ItemGroup>
     <Report Include="AccountShipmentSummary.rdl" />
     <Report Include="AccountShipmentSummaryWithInvoice.rdl" />
+    <Report Include="AcknowledgementTitlePage.rdl" />
     <Report Include="AvalonReport.rdl" />
+    <Report Include="BackOrders.rdl" />
     <Report Include="Barricks and Artone Resident Room Furniture.rdl" />
     <Report Include="BasicQuoteInfo.rdl" />
     <Report Include="Budgetary.rdl" />
@@ -72,9 +74,12 @@
     <Report Include="FabricShippingReport.rdl" />
     <Report Include="Facilities By State.rdl" />
     <Report Include="FireCertificationCust.rdl" />
+    <Report Include="FireCertificationCust_wPics.rdl" />
     <Report Include="FireCertificationFax.rdl" />
     <Report Include="FlooringMargins.rdl" />
     <Report Include="HolsagContest.rdl" />
+    <Report Include="ICCG_WarehouseAck.rdl" />
+    <Report Include="IID Order Purchasing Form.rdl" />
     <Report Include="InstallMargins.rdl" />
     <Report Include="InvoicedItems.rdl" />
     <Report Include="InvoicedItemsByDesigner.rdl" />
@@ -91,6 +96,8 @@
     <Report Include="OpenProposalsByDesigner.rdl" />
     <Report Include="OpenProposalsForMailing.rdl" />
     <Report Include="OpenQuotes_NoLost_Cancelled.rdl" />
+    <Report Include="Original Invoice - Final.rdl" />
+    <Report Include="Original Invoice - Rough.rdl" />
     <Report Include="POsMissingEstimatedInvoiceInfo.rdl" />
     <Report Include="PO_EstShipDateReq.rdl" />
     <Report Include="PO_EstShipDateReq_ByPO.rdl" />
