@@ -57,6 +57,7 @@
     <Report Include="BackOrders.rdl" />
     <Report Include="Barricks and Artone Resident Room Furniture.rdl" />
     <Report Include="BasicQuoteInfo.rdl" />
+    <Report Include="BookingsMarginReport.rdl" />
     <Report Include="Budgetary.rdl" />
     <Report Include="BuyoutsWithRepExcel.rdl" />
     <Report Include="BuyoutTotalsByRep.rdl" />
@@ -81,12 +82,15 @@
     <Report Include="ICCG_WarehouseAck.rdl" />
     <Report Include="IID Order Purchasing Form.rdl" />
     <Report Include="InstallMargins.rdl" />
+    <Report Include="Inventory.rdl" />
     <Report Include="InvoicedItems.rdl" />
     <Report Include="InvoicedItemsByDesigner.rdl" />
     <Report Include="InvoicesByProjectCoordinator.rdl" />
     <Report Include="InvoiceSummaryForOneNationalAccount.rdl" />
     <Report Include="ItemSummary.rdl" />
     <Report Include="LeadSourceTracking.rdl" />
+    <Report Include="MEBlankField.rdl" />
+    <Report Include="MECompleteField.rdl" />
     <Report Include="National Accounts.rdl" />
     <Report Include="NoEstimatedShipDate.rdl" />
     <Report Include="OpenProjectsByNationalAcctSummary.rdl" />
@@ -101,6 +105,10 @@
     <Report Include="POsMissingEstimatedInvoiceInfo.rdl" />
     <Report Include="PO_EstShipDateReq.rdl" />
     <Report Include="PO_EstShipDateReq_ByPO.rdl" />
+    <Report Include="PrepaidBuyoutReport.rdl" />
+    <Report Include="ProjectedInvoiceMonth.rdl" />
+    <Report Include="ProjectsByCoordinator.rdl" />
+    <Report Include="ProjectsByCoordinatorOpenOrders.rdl" />
     <Report Include="ProprietaryTotalsByRep.rdl" />
     <Report Include="PurchaseOrder.rdl" />
     <Report Include="PurchaseOrderByProjectCoordinator.rdl" />
