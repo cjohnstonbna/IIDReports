@@ -52,6 +52,7 @@
   <ItemGroup>
     <Report Include="AccountShipmentSummary.rdl" />
     <Report Include="AccountShipmentSummaryWithInvoice.rdl" />
+    <Report Include="Acknowledgement.rdl" />
     <Report Include="AcknowledgementTitlePage.rdl" />
     <Report Include="AvalonReport.rdl" />
     <Report Include="BackOrders.rdl" />
@@ -62,6 +63,7 @@
     <Report Include="BuyoutsWithRepExcel.rdl" />
     <Report Include="BuyoutTotalsByRep.rdl" />
     <Report Include="CarryOver.rdl" />
+    <Report Include="CheckForMissing_DiscModelsInQuote.rdl" />
     <Report Include="Close Ratio.rdl" />
     <Report Include="CloseRate.rdl" />
     <Report Include="ConsulateOpenItems.rdl" />
@@ -71,6 +73,7 @@
     <Report Include="CustomerOrderUpdateReq_ByPO.rdl" />
     <Report Include="CustOrderPO.rdl" />
     <Report Include="DesignerCoordinatorWorkload.rdl" />
+    <Report Include="EdgecombeFabric.rdl" />
     <Report Include="Excel.rdl" />
     <Report Include="FabricShippingReport.rdl" />
     <Report Include="Facilities By State.rdl" />
@@ -78,9 +81,12 @@
     <Report Include="FireCertificationCust_wPics.rdl" />
     <Report Include="FireCertificationFax.rdl" />
     <Report Include="FlooringMargins.rdl" />
+    <Report Include="FreightAnalysis.rdl" />
     <Report Include="HolsagContest.rdl" />
     <Report Include="ICCG_WarehouseAck.rdl" />
+    <Report Include="ICCG_WarehouseAck_AllItems.rdl" />
     <Report Include="IID Order Purchasing Form.rdl" />
+    <Report Include="ImageReport.rdl" />
     <Report Include="InstallMargins.rdl" />
     <Report Include="Inventory.rdl" />
     <Report Include="InvoicedItems.rdl" />
@@ -91,6 +97,7 @@
     <Report Include="LeadSourceTracking.rdl" />
     <Report Include="MEBlankField.rdl" />
     <Report Include="MECompleteField.rdl" />
+    <Report Include="ModelsNotUsedSince.rdl" />
     <Report Include="National Accounts.rdl" />
     <Report Include="NoEstimatedShipDate.rdl" />
     <Report Include="OpenProjectsByNationalAcctSummary.rdl" />
@@ -109,6 +116,7 @@
     <Report Include="ProjectedInvoiceMonth.rdl" />
     <Report Include="ProjectsByCoordinator.rdl" />
     <Report Include="ProjectsByCoordinatorOpenOrders.rdl" />
+    <Report Include="ProprietaryCIDShipments.rdl" />
     <Report Include="ProprietaryTotalsByRep.rdl" />
     <Report Include="PurchaseOrder.rdl" />
     <Report Include="PurchaseOrderByProjectCoordinator.rdl" />
@@ -124,6 +132,7 @@
     <Report Include="RamatMedicalReport.rdl" />
     <Report Include="RamatShippingReport.rdl" />
     <Report Include="ShippingByMonthBreakdown.rdl" />
+    <Report Include="ShippingDocument.rdl" />
     <Report Include="ShippingMarginTotal.rdl" />
     <Report Include="ShippingMarginTotalByMonth.rdl" />
     <Report Include="ShippingStatusReport_Excel.rdl" />
