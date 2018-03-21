@@ -116,6 +116,7 @@
     <Report Include="ProjectedInvoiceMonth.rdl" />
     <Report Include="ProjectsByCoordinator.rdl" />
     <Report Include="ProjectsByCoordinatorOpenOrders.rdl" />
+    <Report Include="ProjectsByReps.rdl" />
     <Report Include="ProprietaryCIDShipments.rdl" />
     <Report Include="ProprietaryTotalsByRep.rdl" />
     <Report Include="PurchaseOrder.rdl" />
